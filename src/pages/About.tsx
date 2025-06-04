@@ -1,8 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function About() {
-  const values = [
+interface Value {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+const About: React.FC = () => {
+  const values: Value[] = [
     {
       icon: '🎯',
       title: 'Accuracy First',
@@ -25,7 +31,7 @@ function About() {
     }
   ];
 
-  const capabilities = [
+  const capabilities: string[] = [
     'Business listings and commercial establishments',
     'Educational institutions and training centers',
     'Healthcare facilities and medical services',
@@ -35,6 +41,30 @@ function About() {
     'Government and public services',
     'Financial institutions and services'
   ];
+
+  const handleCardHover = (e: React.MouseEvent<HTMLDivElement>, isEntering: boolean): void => {
+    const target = e.currentTarget;
+    if (isEntering) {
+      target.style.transform = 'translateY(-5px)';
+      target.style.boxShadow = '0 10px 25px rgba(0,0,0,0.15)';
+    } else {
+      target.style.transform = 'translateY(0)';
+      target.style.boxShadow = '0 1px 3px 0 rgba(0, 0, 0, 0.1)';
+    }
+  };
+
+  const handleCoverageItemHover = (e: React.MouseEvent<HTMLDivElement>, isEntering: boolean): void => {
+    const target = e.currentTarget;
+    if (isEntering) {
+      target.style.transform = 'translateX(10px)';
+      target.style.borderColor = '#667eea';
+      target.style.background = 'linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%)';
+    } else {
+      target.style.transform = 'translateX(0)';
+      target.style.borderColor = 'rgba(102, 126, 234, 0.1)';
+      target.style.background = 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)';
+    }
+  };
 
   return (
     <div>
@@ -337,19 +367,17 @@ function About() {
           
           <div className="grid grid-2">
             {values.map((value, index) => (
-              <div key={index} className="card" style={{ 
-                textAlign: 'center', 
-                transition: 'transform 0.2s, box-shadow 0.2s',
-                cursor: 'default'
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.transform = 'translateY(-5px)';
-                e.target.style.boxShadow = '0 10px 25px rgba(0,0,0,0.15)';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.boxShadow = '0 1px 3px 0 rgba(0, 0, 0, 0.1)';
-              }}>
+              <div 
+                key={index} 
+                className="card" 
+                style={{ 
+                  textAlign: 'center', 
+                  transition: 'transform 0.2s, box-shadow 0.2s',
+                  cursor: 'default'
+                }}
+                onMouseEnter={(e) => handleCardHover(e, true)}
+                onMouseLeave={(e) => handleCardHover(e, false)}
+              >
                 <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>{value.icon}</div>
                 <h3 style={{ color: '#1f2937', marginBottom: '1rem' }}>{value.title}</h3>
                 <p>{value.description}</p>
@@ -415,26 +443,21 @@ function About() {
                 
                 <div style={{ display: 'grid', gap: '1rem' }}>
                   {capabilities.slice(0, 4).map((item, index) => (
-                    <div key={index} style={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      padding: '1rem',
-                      background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
-                      borderRadius: '12px',
-                      border: '1px solid rgba(102, 126, 234, 0.1)',
-                      transition: 'all 0.3s ease',
-                      cursor: 'default'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.target.style.transform = 'translateX(10px)';
-                      e.target.style.borderColor = '#667eea';
-                      e.target.style.background = 'linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.transform = 'translateX(0)';
-                      e.target.style.borderColor = 'rgba(102, 126, 234, 0.1)';
-                      e.target.style.background = 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)';
-                    }}>
+                    <div 
+                      key={index} 
+                      style={{ 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        padding: '1rem',
+                        background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
+                        borderRadius: '12px',
+                        border: '1px solid rgba(102, 126, 234, 0.1)',
+                        transition: 'all 0.3s ease',
+                        cursor: 'default'
+                      }}
+                      onMouseEnter={(e) => handleCoverageItemHover(e, true)}
+                      onMouseLeave={(e) => handleCoverageItemHover(e, false)}
+                    >
                       <div style={{ 
                         width: '12px',
                         height: '12px',
@@ -721,6 +744,6 @@ function About() {
       </section>
     </div>
   );
-}
+};
 
 export default About; 

@@ -1,7 +1,26 @@
 import React from 'react';
 
-function Contact() {
-  const contactMethods = [
+interface ContactMethod {
+  icon: string;
+  title: string;
+  description: string;
+  detail: string;
+  note: string;
+}
+
+interface Guideline {
+  icon: string;
+  title: string;
+  items: string[];
+}
+
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+const Contact: React.FC = () => {
+  const contactMethods: ContactMethod[] = [
     {
       icon: '📧',
       title: 'Email Us',
@@ -25,7 +44,7 @@ function Contact() {
     }
   ];
 
-  const guidelines = [
+  const guidelines: Guideline[] = [
     {
       icon: '🏙️',
       title: 'Geographic Scope',
@@ -48,7 +67,7 @@ function Contact() {
     }
   ];
 
-  const faqs = [
+  const faqs: FAQ[] = [
     {
       question: 'What data formats do you provide?',
       answer: 'We provide data in multiple formats including CSV, JSON, GeoJSON, XML, and can accommodate custom formats upon request. All data comes with comprehensive documentation.'
@@ -74,6 +93,19 @@ function Contact() {
       answer: 'Yes, we offer various support levels including data updates, technical assistance, and consultation on best practices for data usage.'
     }
   ];
+
+  const handleCardHover = (e: React.MouseEvent<HTMLDivElement>, isEntering: boolean): void => {
+    const target = e.currentTarget;
+    if (isEntering) {
+      target.style.transform = 'translateY(-5px)';
+      target.style.boxShadow = '0 10px 25px rgba(0,0,0,0.15)';
+      target.style.borderColor = '#3b82f6';
+    } else {
+      target.style.transform = 'translateY(0)';
+      target.style.boxShadow = '0 1px 3px 0 rgba(0, 0, 0, 0.1)';
+      target.style.borderColor = '#e5e7eb';
+    }
+  };
 
   return (
     <div>
@@ -114,22 +146,18 @@ function Contact() {
           
           <div className="grid grid-3">
             {contactMethods.map((method, index) => (
-              <div key={index} className="card" style={{ 
-                textAlign: 'center',
-                transition: 'transform 0.2s, box-shadow 0.2s',
-                cursor: 'pointer',
-                border: '2px solid #e5e7eb'
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.transform = 'translateY(-5px)';
-                e.target.style.boxShadow = '0 10px 25px rgba(0,0,0,0.15)';
-                e.target.style.borderColor = '#3b82f6';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.boxShadow = '0 1px 3px 0 rgba(0, 0, 0, 0.1)';
-                e.target.style.borderColor = '#e5e7eb';
-              }}>
+              <div 
+                key={index} 
+                className="card" 
+                style={{ 
+                  textAlign: 'center',
+                  transition: 'transform 0.2s, box-shadow 0.2s',
+                  cursor: 'pointer',
+                  border: '2px solid #e5e7eb'
+                }}
+                onMouseEnter={(e) => handleCardHover(e, true)}
+                onMouseLeave={(e) => handleCardHover(e, false)}
+              >
                 <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>{method.icon}</div>
                 <h3 style={{ color: '#1f2937', marginBottom: '1rem' }}>{method.title}</h3>
                 <p style={{ marginBottom: '1rem', color: '#6b7280' }}>{method.description}</p>
@@ -303,6 +331,6 @@ function Contact() {
       </section>
     </div>
   );
-}
+};
 
 export default Contact; 

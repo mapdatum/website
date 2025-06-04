@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const Header: React.FC = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const location = useLocation();
 
-  const isActive = (path) => location.pathname === path;
+  const isActive = (path: string): boolean => location.pathname === path;
 
   return (
     <header className="header">
@@ -49,6 +49,6 @@ function Header() {
       </div>
     </header>
   );
-}
+};
 
 export default Header; 

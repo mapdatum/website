@@ -1,8 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Home() {
-  const cities = [
+interface City {
+  name: string;
+  icon: string;
+  coords: string;
+}
+
+interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+  color: string;
+}
+
+interface Stat {
+  number: string;
+  label: string;
+  icon: string;
+}
+
+interface UseCase {
+  title: string;
+  description: string;
+  icon: string;
+  gradient: string;
+}
+
+const Home: React.FC = () => {
+  const cities: City[] = [
     { name: 'Mumbai', icon: '🏙️', coords: '19.0760°N, 72.8777°E' },
     { name: 'Delhi', icon: '🏛️', coords: '28.7041°N, 77.1025°E' },
     { name: 'Bangalore', icon: '💻', coords: '12.9716°N, 77.5946°E' },
@@ -15,7 +41,7 @@ function Home() {
     { name: 'Surat', icon: '💎', coords: '21.1702°N, 72.8311°E' }
   ];
 
-  const features = [
+  const features: Feature[] = [
     {
       icon: '📍',
       title: 'Precise Location Data',
@@ -36,14 +62,14 @@ function Home() {
     }
   ];
 
-  const stats = [
+  const stats: Stat[] = [
     { number: '10+', label: 'Cities Mapped', icon: '🏙️' },
     { number: '100K+', label: 'Data Points', icon: '📍' },
     { number: '24hrs', label: 'Response Time', icon: '⚡' },
     { number: '99%', label: 'Data Accuracy', icon: '🎯' }
   ];
 
-  const useCases = [
+  const useCases: UseCase[] = [
     {
       title: 'Business Intelligence',
       description: 'Market research, competitor analysis, and location-based insights for strategic decision making',
@@ -504,6 +530,6 @@ function Home() {
       </section>
     </div>
   );
-}
+};
 
 export default Home; 
