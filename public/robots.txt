@@ -1,3 +1,8 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+
+# Sitemap
+Sitemap: https://mapdatum.com/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1

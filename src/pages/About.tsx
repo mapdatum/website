@@ -1,745 +1,399 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-interface Value {
-  icon: string;
-  title: string;
-  description: string;
-}
-
 const About: React.FC = () => {
-  const values: Value[] = [
+  const advantages = [
     {
-      icon: '🎯',
-      title: 'Accuracy First',
-      description: 'We prioritize data accuracy and validation to ensure you receive reliable, trustworthy location information.'
+      title: "Expert Curation",
+      description: "Our data experts manually verify and enrich each POI entry, ensuring accuracy and completeness that raw open data can't match.",
+      icon: "🎯"
     },
     {
-      icon: '🚀',
-      title: 'Innovation Driven',
-      description: 'Continuously improving our data collection and enrichment processes using cutting-edge technologies.'
+      title: "Quality Assurance",
+      description: "Multi-stage validation process including automated checks, manual verification, and continuous monitoring for data integrity.",
+      icon: "✅"
     },
     {
-      icon: '🤝',
-      title: 'Customer Focus',
-      description: 'We work closely with our clients to understand their unique requirements and deliver tailored solutions.'
+      title: "Rich Attributes",
+      description: "Beyond basic location data, we provide detailed attributes like business hours, contact information, categories, and local insights.",
+      icon: "📊"
     },
     {
-      icon: '🌍',
-      title: 'Global Vision',
-      description: 'Starting locally, thinking globally. Our goal is to provide comprehensive location data worldwide.'
+      title: "Regular Updates",
+      description: "Continuous maintenance and updates ensure your applications always have the most current and accurate location information.",
+      icon: "🔄"
     }
   ];
 
-  const capabilities: string[] = [
-    'Business listings and commercial establishments',
-    'Educational institutions and training centers',
-    'Healthcare facilities and medical services',
-    'Retail locations and shopping centers',
-    'Hospitality and entertainment venues',
-    'Transportation and infrastructure',
-    'Government and public services',
-    'Financial institutions and services'
+  const values = [
+    {
+      title: "Data Integrity",
+      description: "We believe that quality data is the foundation of successful location-based applications.",
+      icon: "🛡️"
+    },
+    {
+      title: "Customer Success",
+      description: "Your success with location data drives our commitment to excellence and continuous improvement.",
+      icon: "🤝"
+    },
+    {
+      title: "Innovation",
+      description: "We continuously explore new ways to enhance and deliver location intelligence solutions.",
+      icon: "💡"
+    }
   ];
-
-  const handleCardHover = (e: React.MouseEvent<HTMLDivElement>, isEntering: boolean): void => {
-    const target = e.currentTarget;
-    if (isEntering) {
-      target.style.transform = 'translateY(-5px)';
-      target.style.boxShadow = '0 10px 25px rgba(0,0,0,0.15)';
-    } else {
-      target.style.transform = 'translateY(0)';
-      target.style.boxShadow = '0 1px 3px 0 rgba(0, 0, 0, 0.1)';
-    }
-  };
-
-  const handleCoverageItemHover = (e: React.MouseEvent<HTMLDivElement>, isEntering: boolean): void => {
-    const target = e.currentTarget;
-    if (isEntering) {
-      target.style.transform = 'translateX(10px)';
-      target.style.borderColor = '#667eea';
-      target.style.background = 'linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%)';
-    } else {
-      target.style.transform = 'translateX(0)';
-      target.style.borderColor = 'rgba(102, 126, 234, 0.1)';
-      target.style.background = 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)';
-    }
-  };
 
   return (
-    <div>
-      <section className="hero" style={{ 
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        color: 'white',
-        padding: '6rem 0',
-        textAlign: 'center'
-      }}>
-        <div className="container">
-          <h1 style={{ 
-            fontSize: '4rem', 
-            marginBottom: '1.5rem',
-            color: 'white',
-            textShadow: '0 4px 12px rgba(0,0,0,0.6)',
-            fontWeight: '900'
-          }}>About MapDatum</h1>
-          <p style={{ 
-            fontSize: '1.4rem', 
-            maxWidth: '700px', 
-            margin: '0 auto',
-            color: 'rgba(255,255,255,0.95)',
-            textShadow: '0 2px 8px rgba(0,0,0,0.4)',
-            fontWeight: '500'
-          }}>
-            Building the future of location intelligence through curated, high-quality data solutions.
-          </p>
-        </div>
-      </section>
-
-      {/* Enhanced Mission Section */}
-      <section className="section">
-        <div className="container">
-          <div className="section-title">
-            <h2 style={{ fontSize: '3.5rem', color: '#1f2937' }}>🎯 Our Mission</h2>
-            <p style={{ fontSize: '1.3rem', color: '#6b7280' }}>
-              Empowering businesses with precise location intelligence
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-primary-600 to-primary-700 text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-4xl sm:text-5xl font-bold mb-6">
+              About MapDatum
+            </h1>
+            <p className="text-xl text-primary-100 leading-relaxed">
+              We're on a mission to provide the highest quality location data solutions for India's rapidly growing digital ecosystem.
             </p>
           </div>
-          
-          <div className="grid grid-2" style={{ alignItems: 'stretch', gap: '4rem' }}>
-            <div className="card" style={{ 
-              background: 'rgba(255, 255, 255, 0.9)',
-              backdropFilter: 'blur(20px)',
-              border: 'none',
-              padding: '3rem',
-              display: 'flex',
-              flexDirection: 'column'
-            }}>
-              <div style={{ 
-                display: 'flex', 
-                alignItems: 'center', 
-                marginBottom: '2rem',
-                padding: '1rem',
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                borderRadius: '16px',
-                color: 'white'
-              }}>
-                <div style={{ 
-                  fontSize: '2.5rem', 
-                  marginRight: '1rem'
-                }}>🎯</div>
-                <div>
-                  <h3 style={{ 
-                    color: 'white', 
-                    margin: '0 0 0.5rem 0',
-                    fontSize: '1.3rem'
-                  }}>Our Vision</h3>
-                  <p style={{ 
-                    color: 'rgba(255,255,255,0.9)', 
-                    margin: 0,
-                    fontSize: '0.9rem'
-                  }}>Transforming decision making</p>
+        </div>
+      </section>
+
+      {/* Vision & Mission - Redesigned */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              Our Story & Purpose
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Driven by a passion for precision and powered by innovation, we're building India's most trusted location intelligence platform
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            {/* Vision Card */}
+            <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-8 hover:shadow-xl transition-shadow">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center mr-4">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
                 </div>
+                <h3 className="text-2xl font-bold text-gray-900">Our Vision</h3>
               </div>
-              
-              <div style={{ flex: 1 }}>
-                <p style={{ fontSize: '1.2rem', lineHeight: '1.8', marginBottom: '1.5rem', color: '#374151' }}>
-                  We envision a world where every business decision is powered by accurate, comprehensive location intelligence. Our mission is to democratize access to high-quality geospatial data.
-                </p>
-                <p style={{ fontSize: '1.1rem', lineHeight: '1.7', color: '#6b7280', marginBottom: '2rem' }}>
-                  By bridging the gap between raw mapping data and actionable business insights, we enable organizations to make informed decisions that drive growth and innovation.
-                </p>
-                
-                {/* Core Values */}
-                <div style={{
-                  background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
-                  padding: '1.5rem',
-                  borderRadius: '12px'
-                }}>
-                  <h4 style={{ 
-                    color: '#1f2937', 
-                    marginBottom: '1rem',
-                    fontSize: '1.1rem',
-                    fontWeight: '700'
-                  }}>Our Core Values</h4>
-                  <div style={{ display: 'grid', gap: '0.8rem' }}>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                      <span style={{ marginRight: '0.8rem', fontSize: '1.2rem' }}>✨</span>
-                      <span style={{ color: '#374151', fontSize: '0.95rem' }}>Quality over quantity in every dataset</span>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                      <span style={{ marginRight: '0.8rem', fontSize: '1.2rem' }}>🤝</span>
-                      <span style={{ color: '#374151', fontSize: '0.95rem' }}>Partnership-driven approach with clients</span>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                      <span style={{ marginRight: '0.8rem', fontSize: '1.2rem' }}>🚀</span>
-                      <span style={{ color: '#374151', fontSize: '0.95rem' }}>Continuous innovation in data solutions</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                To become India's most trusted provider of location intelligence, empowering businesses and developers with accurate, enriched, and actionable geographic data that drives innovation and growth.
+              </p>
             </div>
-            
-            <div className="card location-card" style={{ 
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', 
-              color: 'white', 
-              border: 'none',
-              padding: '3rem',
-              position: 'relative',
-              overflow: 'hidden',
-              display: 'flex',
-              flexDirection: 'column'
-            }}>
-              {/* Floating map elements */}
-              <div style={{
-                position: 'absolute',
-                top: '10%',
-                right: '10%',
-                fontSize: '2rem',
-                opacity: 0.2,
-                animation: 'float 6s ease-in-out infinite'
-              }}>📍</div>
-              <div style={{
-                position: 'absolute',
-                bottom: '15%',
-                left: '15%',
-                fontSize: '1.5rem',
-                opacity: 0.2,
-                animation: 'float 8s ease-in-out infinite',
-                animationDelay: '-3s'
-              }}>🌍</div>
-              
-              <div style={{ flex: 1, position: 'relative', zIndex: 2 }}>
-                <div style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  marginBottom: '2rem',
-                  padding: '1rem',
-                  background: 'rgba(255,255,255,0.1)',
-                  borderRadius: '16px',
-                  backdropFilter: 'blur(10px)'
-                }}>
-                  <div style={{ 
-                    fontSize: '2.5rem', 
-                    marginRight: '1rem'
-                  }}>🗺️</div>
-                  <div>
-                    <h3 style={{ 
-                      color: 'white', 
-                      margin: '0 0 0.5rem 0',
-                      fontSize: '1.3rem'
-                    }}>Our Approach</h3>
-                    <p style={{ 
-                      color: 'rgba(255,255,255,0.9)', 
-                      margin: 0,
-                      fontSize: '0.9rem'
-                    }}>Data-driven methodology</p>
-                  </div>
+
+            {/* Mission Card */}
+            <div className="bg-gradient-to-br from-secondary-50 to-secondary-100 rounded-2xl p-8 hover:shadow-xl transition-shadow">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-secondary-600 rounded-full flex items-center justify-center mr-4">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
                 </div>
-                
-                <p style={{ 
-                  color: 'rgba(255,255,255,0.95)', 
-                  fontSize: '1.1rem',
-                  lineHeight: '1.7',
-                  marginBottom: '2rem'
-                }}>
-                  We follow a rigorous process that combines automated data collection with human verification, ensuring each dataset meets our high standards for accuracy and completeness.
-                </p>
-                
-                {/* Process Steps */}
-                <div style={{ flex: 1 }}>
-                  <h4 style={{ 
-                    color: 'white', 
-                    marginBottom: '1.5rem',
-                    fontSize: '1.1rem',
-                    fontWeight: '700'
-                  }}>Our Process</h4>
-                  <div style={{ display: 'grid', gap: '1rem' }}>
-                    <div style={{
-                      background: 'rgba(255,255,255,0.1)',
-                      padding: '1rem',
-                      borderRadius: '12px',
-                      backdropFilter: 'blur(10px)',
-                      border: '1px solid rgba(255,255,255,0.2)'
-                    }}>
-                      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5rem' }}>
-                        <span style={{ 
-                          background: 'rgba(255,255,255,0.2)',
-                          borderRadius: '50%',
-                          width: '24px',
-                          height: '24px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          marginRight: '0.8rem',
-                          fontSize: '0.8rem',
-                          fontWeight: 'bold'
-                        }}>1</span>
-                        <span style={{ fontWeight: '600', fontSize: '0.95rem' }}>Source & Aggregate</span>
-                      </div>
-                      <p style={{ 
-                        color: 'rgba(255,255,255,0.8)', 
-                        fontSize: '0.85rem',
-                        margin: 0,
-                        paddingLeft: '2rem'
-                      }}>
-                        Collect from multiple trusted platforms
-                      </p>
-                    </div>
-                    
-                    <div style={{
-                      background: 'rgba(255,255,255,0.1)',
-                      padding: '1rem',
-                      borderRadius: '12px',
-                      backdropFilter: 'blur(10px)',
-                      border: '1px solid rgba(255,255,255,0.2)'
-                    }}>
-                      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5rem' }}>
-                        <span style={{ 
-                          background: 'rgba(255,255,255,0.2)',
-                          borderRadius: '50%',
-                          width: '24px',
-                          height: '24px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          marginRight: '0.8rem',
-                          fontSize: '0.8rem',
-                          fontWeight: 'bold'
-                        }}>2</span>
-                        <span style={{ fontWeight: '600', fontSize: '0.95rem' }}>Validate & Enrich</span>
-                      </div>
-                      <p style={{ 
-                        color: 'rgba(255,255,255,0.8)', 
-                        fontSize: '0.85rem',
-                        margin: 0,
-                        paddingLeft: '2rem'
-                      }}>
-                        Clean, verify, and enhance data quality
-                      </p>
-                    </div>
-                    
-                    <div style={{
-                      background: 'rgba(255,255,255,0.1)',
-                      padding: '1rem',
-                      borderRadius: '12px',
-                      backdropFilter: 'blur(10px)',
-                      border: '1px solid rgba(255,255,255,0.2)'
-                    }}>
-                      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5rem' }}>
-                        <span style={{ 
-                          background: 'rgba(255,255,255,0.2)',
-                          borderRadius: '50%',
-                          width: '24px',
-                          height: '24px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          marginRight: '0.8rem',
-                          fontSize: '0.8rem',
-                          fontWeight: 'bold'
-                        }}>3</span>
-                        <span style={{ fontWeight: '600', fontSize: '0.95rem' }}>Package & Deliver</span>
-                      </div>
-                      <p style={{ 
-                        color: 'rgba(255,255,255,0.8)', 
-                        fontSize: '0.85rem',
-                        margin: 0,
-                        paddingLeft: '2rem'
-                      }}>
-                        Format for easy integration and use
-                      </p>
-                    </div>
-                  </div>
+                <h3 className="text-2xl font-bold text-gray-900">Our Mission</h3>
+              </div>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                MapDatum bridges the gap between raw location data and business-ready intelligence. We transform scattered geographic information into structured, verified, and enriched datasets that businesses can rely on.
+              </p>
+            </div>
+          </div>
+
+          {/* India Focus Section */}
+          <div className="bg-gray-50 rounded-2xl p-8 text-center">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex justify-center mb-6">
+                <div className="w-16 h-16 bg-primary-600 rounded-full flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
                 </div>
               </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Built for India's Digital Future</h3>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                Starting with comprehensive coverage of India's top 12-15 cities, we understand the unique challenges and opportunities in the Indian market. Our deep local knowledge combined with cutting-edge technology ensures data that truly serves India's growing digital ecosystem.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="section" style={{ backgroundColor: '#f9fafb' }}>
-        <div className="container">
-          <div className="section-title">
-            <h2>Our Core Values</h2>
-            <p>The principles that guide everything we do</p>
+      {/* Why Curated Data Matters */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              Curated Data vs. Raw Open Data
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Understanding the critical difference between raw data sources and expertly curated location intelligence
+            </p>
           </div>
-          
-          <div className="grid grid-2">
-            {values.map((value, index) => (
-              <div 
-                key={index} 
-                className="card" 
-                style={{ 
-                  textAlign: 'center', 
-                  transition: 'transform 0.2s, box-shadow 0.2s',
-                  cursor: 'default'
-                }}
-                onMouseEnter={(e) => handleCardHover(e, true)}
-                onMouseLeave={(e) => handleCardHover(e, false)}
-              >
-                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>{value.icon}</div>
-                <h3 style={{ color: '#1f2937', marginBottom: '1rem' }}>{value.title}</h3>
-                <p>{value.description}</p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            {/* Raw Data */}
+            <div className="bg-white rounded-lg shadow-lg p-8 border-l-4 border-red-500">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                <span className="text-red-500 mr-3">⚠️</span>
+                Raw Open Data
+              </h3>
+              <ul className="space-y-3 text-gray-600">
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2">•</span>
+                  Inconsistent data quality and completeness
+                </li>
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2">•</span>
+                  Missing or outdated business information
+                </li>
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2">•</span>
+                  Requires extensive cleaning and validation
+                </li>
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2">•</span>
+                  Limited attribute richness
+                </li>
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2">•</span>
+                  No quality assurance or support
+                </li>
+              </ul>
+            </div>
+
+            {/* Curated Data */}
+            <div className="bg-white rounded-lg shadow-lg p-8 border-l-4 border-green-500">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                <span className="text-green-500 mr-3">✅</span>
+                MapDatum Curated Data
+              </h3>
+              <ul className="space-y-3 text-gray-600">
+                <li className="flex items-start">
+                  <span className="text-green-500 mr-2">•</span>
+                  Verified accuracy and completeness
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-500 mr-2">•</span>
+                  Rich business attributes and metadata
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-500 mr-2">•</span>
+                  Ready-to-use structured formats
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-500 mr-2">•</span>
+                  Enhanced with local insights
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-500 mr-2">•</span>
+                  Continuous updates and support
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Advantages Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {advantages.map((advantage, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
+                <div className="text-4xl mb-4">{advantage.icon}</div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">{advantage.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{advantage.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Enhanced What We Cover Section */}
-      <section className="section data-visualization" style={{ 
-        background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
-        position: 'relative'
-      }}>
-        <div className="container">
-          <div className="section-title">
-            <h2 style={{ fontSize: '3.5rem', color: '#1f2937' }}>🗺️ What We Cover</h2>
-            <p style={{ fontSize: '1.3rem', color: '#6b7280' }}>
-              Comprehensive location data across diverse business categories
+      {/* Team & Expertise */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              Expertise in Geospatial Technology
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Our team brings together years of experience in geospatial data, technology, and the Indian market
             </p>
           </div>
-          
-          <div className="grid grid-2" style={{ gap: '4rem', alignItems: 'stretch' }}>
-            <div className="card" style={{
-              background: 'rgba(255, 255, 255, 0.9)',
-              backdropFilter: 'blur(20px)',
-              border: 'none',
-              padding: '3rem',
-              display: 'flex',
-              flexDirection: 'column'
-            }}>
-              <div style={{ 
-                display: 'flex', 
-                alignItems: 'center', 
-                marginBottom: '2rem',
-                padding: '1rem',
-                background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-                borderRadius: '16px',
-                color: 'white'
-              }}>
-                <div style={{ 
-                  fontSize: '2.5rem', 
-                  marginRight: '1rem'
-                }}>📊</div>
-                <div>
-                  <h3 style={{ 
-                    color: 'white', 
-                    margin: '0 0 0.5rem 0',
-                    fontSize: '1.3rem'
-                  }}>Data Categories</h3>
-                  <p style={{ 
-                    color: 'rgba(255,255,255,0.9)', 
-                    margin: 0,
-                    fontSize: '0.9rem'
-                  }}>8 major business sectors</p>
-                </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+            <div className="bg-gray-50 rounded-lg p-8 text-center">
+              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-1.447-.894L15 4m0 13V4m0 0L9 7" />
+                </svg>
               </div>
-              
-              <div style={{ flex: 1 }}>
-                <p style={{ fontSize: '1.1rem', marginBottom: '2rem', color: '#6b7280' }}>
-                  Our datasets encompass a comprehensive range of location types across multiple categories:
-                </p>
-                
-                <div style={{ display: 'grid', gap: '1rem' }}>
-                  {capabilities.slice(0, 4).map((item, index) => (
-                    <div 
-                      key={index} 
-                      style={{ 
-                        display: 'flex', 
-                        alignItems: 'center', 
-                        padding: '1rem',
-                        background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
-                        borderRadius: '12px',
-                        border: '1px solid rgba(102, 126, 234, 0.1)',
-                        transition: 'all 0.3s ease',
-                        cursor: 'default'
-                      }}
-                      onMouseEnter={(e) => handleCoverageItemHover(e, true)}
-                      onMouseLeave={(e) => handleCoverageItemHover(e, false)}
-                    >
-                      <div style={{ 
-                        width: '12px',
-                        height: '12px',
-                        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                        borderRadius: '50%',
-                        marginRight: '1rem',
-                        flexShrink: 0
-                      }}></div>
-                      <span style={{ 
-                        color: '#374151', 
-                        fontWeight: '500',
-                        fontSize: '1rem'
-                      }}>{item}</span>
-                    </div>
-                  ))}
-                </div>
-                
-                {/* Additional categories */}
-                <div style={{
-                  marginTop: '1.5rem',
-                  padding: '1.5rem',
-                  background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%)',
-                  borderRadius: '12px',
-                  border: '1px solid rgba(16, 185, 129, 0.2)'
-                }}>
-                  <h4 style={{ 
-                    color: '#1f2937', 
-                    marginBottom: '1rem',
-                    fontSize: '1rem',
-                    fontWeight: '700'
-                  }}>Additional Categories</h4>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.8rem' }}>
-                    {capabilities.slice(4).map((item, index) => (
-                      <div key={index} style={{ 
-                        display: 'flex', 
-                        alignItems: 'center',
-                        fontSize: '0.9rem',
-                        color: '#374151'
-                      }}>
-                        <span style={{ 
-                          color: '#10b981', 
-                          marginRight: '0.5rem',
-                          fontSize: '0.8rem'
-                        }}>•</span>
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Geospatial Expertise</h3>
+              <p className="text-gray-600">
+                Deep understanding of geographic information systems, spatial data processing, and location intelligence.
+              </p>
             </div>
 
-            <div className="card location-card" style={{ 
-              background: 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)', 
-              border: 'none',
-              padding: '3rem',
-              position: 'relative',
-              overflow: 'hidden',
-              display: 'flex',
-              flexDirection: 'column'
-            }}>
-              {/* Map grid pattern overlay */}
-              <div style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                backgroundImage: 
-                  'linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)',
-                backgroundSize: '20px 20px',
-                opacity: 0.3,
-                pointerEvents: 'none'
-              }}></div>
-              
-              <div style={{ flex: 1, position: 'relative', zIndex: 2 }}>
-                <div style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  marginBottom: '2rem',
-                  padding: '1rem',
-                  background: 'rgba(255,255,255,0.7)',
-                  borderRadius: '16px',
-                  backdropFilter: 'blur(10px)'
-                }}>
-                  <div style={{ 
-                    fontSize: '2.5rem', 
-                    marginRight: '1rem'
-                  }}>🗺️</div>
-                  <div>
-                    <h3 style={{ 
-                      color: '#1f2937', 
-                      margin: '0 0 0.5rem 0',
-                      fontSize: '1.3rem'
-                    }}>Coverage Areas</h3>
-                    <p style={{ 
-                      color: '#6b7280', 
-                      margin: 0,
-                      fontSize: '0.9rem'
-                    }}>Comprehensive geographic reach</p>
-                  </div>
-                </div>
-                
-                <p style={{ 
-                  color: '#6b7280', 
-                  fontSize: '1.1rem', 
-                  lineHeight: '1.7',
-                  marginBottom: '2rem'
-                }}>
-                  From local businesses to major institutions, our data covers the full spectrum 
-                  of location types that matter to your business.
-                </p>
-                
-                {/* Geographic Coverage */}
-                <div style={{ marginBottom: '2rem' }}>
-                  <h4 style={{ 
-                    color: '#1f2937', 
-                    marginBottom: '1rem',
-                    fontSize: '1.1rem',
-                    fontWeight: '700'
-                  }}>Geographic Scope</h4>
-                  <div style={{ display: 'grid', gap: '1rem' }}>
-                    <div style={{
-                      background: 'rgba(255,255,255,0.7)',
-                      padding: '1rem',
-                      borderRadius: '12px',
-                      display: 'flex',
-                      alignItems: 'center'
-                    }}>
-                      <span style={{ fontSize: '1.5rem', marginRight: '1rem' }}>🏙️</span>
-                      <div>
-                        <div style={{ fontWeight: '600', color: '#1f2937', fontSize: '0.95rem' }}>Metropolitan Areas</div>
-                        <div style={{ fontSize: '0.85rem', color: '#6b7280' }}>Major urban centers with high POI density</div>
-                      </div>
-                    </div>
-                    <div style={{
-                      background: 'rgba(255,255,255,0.7)',
-                      padding: '1rem',
-                      borderRadius: '12px',
-                      display: 'flex',
-                      alignItems: 'center'
-                    }}>
-                      <span style={{ fontSize: '1.5rem', marginRight: '1rem' }}>🏘️</span>
-                      <div>
-                        <div style={{ fontWeight: '600', color: '#1f2937', fontSize: '0.95rem' }}>Suburban Regions</div>
-                        <div style={{ fontSize: '0.85rem', color: '#6b7280' }}>Residential and commercial districts</div>
-                      </div>
-                    </div>
-                    <div style={{
-                      background: 'rgba(255,255,255,0.7)',
-                      padding: '1rem',
-                      borderRadius: '12px',
-                      display: 'flex',
-                      alignItems: 'center'
-                    }}>
-                      <span style={{ fontSize: '1.5rem', marginRight: '1rem' }}>🛣️</span>
-                      <div>
-                        <div style={{ fontWeight: '600', color: '#1f2937', fontSize: '0.95rem' }}>Transit Corridors</div>
-                        <div style={{ fontSize: '0.85rem', color: '#6b7280' }}>Transportation hubs and routes</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Data Quality Metrics */}
-                <div style={{
-                  background: 'rgba(255,255,255,0.7)',
-                  padding: '1.5rem',
-                  borderRadius: '12px',
-                  backdropFilter: 'blur(10px)'
-                }}>
-                  <h4 style={{ 
-                    color: '#1f2937', 
-                    marginBottom: '1rem',
-                    fontSize: '1rem',
-                    fontWeight: '700'
-                  }}>Quality Assurance</h4>
-                  <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: '1rem'
-                  }}>
-                    <div style={{ textAlign: 'center' }}>
-                      <div style={{ 
-                        fontSize: '1.8rem', 
-                        fontWeight: '900', 
-                        color: '#667eea',
-                        marginBottom: '0.3rem'
-                      }}>99%</div>
-                      <div style={{ fontSize: '0.8rem', color: '#6b7280' }}>Accuracy Rate</div>
-                    </div>
-                    <div style={{ textAlign: 'center' }}>
-                      <div style={{ 
-                        fontSize: '1.8rem', 
-                        fontWeight: '900', 
-                        color: '#667eea',
-                        marginBottom: '0.3rem'
-                      }}>24h</div>
-                      <div style={{ fontSize: '0.8rem', color: '#6b7280' }}>Update Cycle</div>
-                    </div>
-                  </div>
-                </div>
+            <div className="bg-gray-50 rounded-lg p-8 text-center">
+              <div className="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
               </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Technology Innovation</h3>
+              <p className="text-gray-600">
+                Cutting-edge data processing pipelines, quality assurance systems, and delivery infrastructure.
+              </p>
+            </div>
+
+            <div className="bg-gray-50 rounded-lg p-8 text-center">
+              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Local Market Knowledge</h3>
+              <p className="text-gray-600">
+                Intimate understanding of Indian business ecosystems, cultural nuances, and market dynamics.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Data Sources Section */}
-      <section className="section" style={{ backgroundColor: '#f9fafb' }}>
-        <div className="container">
-          <div className="section-title">
-            <h2>Our Approach to Data Quality</h2>
-            <p>How we ensure the highest standards of accuracy and reliability</p>
+      {/* Core Values */}
+      <section className="py-20 bg-gray-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              Our Core Values
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              The principles that guide our commitment to excellence in location data solutions
+            </p>
           </div>
-          
-          <div className="grid grid-3">
-            <div className="card" style={{ textAlign: 'center', border: '2px solid #3b82f6' }}>
-              <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🔍</div>
-              <h3 style={{ color: '#1f2937' }}>Source Verification</h3>
-              <p>
-                We carefully select and verify data from multiple trusted mapping platforms 
-                and authoritative sources.
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {values.map((value, index) => (
+              <div key={index} className="text-center">
+                <div className="text-5xl mb-6">{value.icon}</div>
+                <h3 className="text-2xl font-bold mb-4">{value.title}</h3>
+                <p className="text-gray-300 leading-relaxed">{value.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Commitment to Growth - Elegant Redesign */}
+      <section className="py-20 bg-gradient-to-br from-primary-50 via-white to-secondary-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+                Commitment to Continuous Improvement
+              </h2>
+              <p className="text-xl text-gray-600 mb-4 leading-relaxed max-w-4xl mx-auto">
+                We're constantly evolving our methodologies, expanding our coverage, and enhancing our data quality.
               </p>
+              <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto rounded-full"></div>
             </div>
             
-            <div className="card" style={{ textAlign: 'center', border: '2px solid #10b981' }}>
-              <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>⚡</div>
-              <h3 style={{ color: '#1f2937' }}>Data Enrichment</h3>
-              <p>
-                Our team adds value through validation, categorization, and enrichment 
-                processes to provide clean, structured datasets.
-              </p>
-            </div>
+            {/* Future Expansion Plans */}
+            <div className="relative">
+              {/* Background decoration */}
+              <div className="absolute inset-0 bg-white rounded-3xl shadow-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 rounded-3xl"></div>
+              
+              <div className="relative p-12">
+                <div className="text-center mb-12">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Future Expansion Plans</h3>
+                  <p className="text-gray-600 max-w-2xl mx-auto">Strategic initiatives shaping the future of location intelligence</p>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="group">
+                    <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl border border-blue-200/50 hover:shadow-lg transition-all duration-300">
+                      <div className="flex items-center mb-6">
+                        <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mr-5 group-hover:scale-110 transition-transform duration-300">
+                          <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        </div>
+                        <h4 className="text-xl font-bold text-gray-900">Geographic Coverage</h4>
+                      </div>
+                      <p className="text-gray-700 leading-relaxed">Expanding to cover <span className="font-semibold text-blue-700">50+ cities</span> across India and neighboring South Asian markets</p>
+                    </div>
+                  </div>
 
-            <div className="card" style={{ textAlign: 'center', border: '2px solid #f59e0b' }}>
-              <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🔄</div>
-              <h3 style={{ color: '#1f2937' }}>Continuous Updates</h3>
-              <p>
-                Regular monitoring and updates ensure our data remains current and 
-                reflects real-world changes.
-              </p>
+                  <div className="group">
+                    <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 p-8 rounded-2xl border border-emerald-200/50 hover:shadow-lg transition-all duration-300">
+                      <div className="flex items-center mb-6">
+                        <div className="w-14 h-14 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center mr-5 group-hover:scale-110 transition-transform duration-300">
+                          <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                          </svg>
+                        </div>
+                        <h4 className="text-xl font-bold text-gray-900">Data Categories</h4>
+                      </div>
+                      <p className="text-gray-700 leading-relaxed">Adding specialized datasets for <span className="font-semibold text-emerald-700">real estate, transportation, and infrastructure</span></p>
+                    </div>
+                  </div>
+
+                  <div className="group">
+                    <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-2xl border border-purple-200/50 hover:shadow-lg transition-all duration-300">
+                      <div className="flex items-center mb-6">
+                        <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mr-5 group-hover:scale-110 transition-transform duration-300">
+                          <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                          </svg>
+                        </div>
+                        <h4 className="text-xl font-bold text-gray-900">Analytics Platform</h4>
+                      </div>
+                      <p className="text-gray-700 leading-relaxed">Developing <span className="font-semibold text-purple-700">business intelligence tools</span> for location-based insights</p>
+                    </div>
+                  </div>
+
+                  <div className="group">
+                    <div className="bg-gradient-to-br from-teal-50 to-teal-100 p-8 rounded-2xl border border-teal-200/50 hover:shadow-lg transition-all duration-300">
+                      <div className="flex items-center mb-6">
+                        <div className="w-14 h-14 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl flex items-center justify-center mr-5 group-hover:scale-110 transition-transform duration-300">
+                          <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                          </svg>
+                        </div>
+                        <h4 className="text-xl font-bold text-gray-900">API Services</h4>
+                      </div>
+                      <p className="text-gray-700 leading-relaxed"><span className="font-semibold text-teal-700">Real-time data access</span> through advanced API and integration platforms</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section">
-        <div className="container">
-          <div className="card" style={{ 
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', 
-            textAlign: 'center',
-            color: 'white',
-            border: 'none',
-            padding: '3rem 2rem'
-          }}>
-            <h2 style={{ color: 'white', fontSize: '2.5rem', marginBottom: '1rem' }}>Ready to Work With Us?</h2>
-            <p style={{ 
-              fontSize: '1.2rem', 
-              maxWidth: '600px', 
-              margin: '0 auto 2rem',
-              color: '#e2e8f0',
-              lineHeight: '1.6'
-            }}>
-              Whether you're building an application, conducting market research, or need location 
-              intelligence for your business, we're here to help with your data requirements.
-            </p>
-            <Link 
-              to="/contact" 
-              className="btn" 
-              style={{ 
-                backgroundColor: 'white',
-                color: '#667eea',
-                fontWeight: '600',
-                fontSize: '1.1rem',
-                padding: '1rem 2rem'
-              }}
-            >
-              Get in Touch
-            </Link>
-          </div>
+      {/* CTA */}
+      <section className="py-16 bg-primary-600">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">
+            Partner with MapDatum
+          </h2>
+          <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+            Join us in building the future of location intelligence in India. Let's discuss how our curated data can accelerate your business goals.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary-600 bg-white hover:bg-gray-50 transition-colors shadow-lg"
+          >
+            Get in Touch
+            <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
         </div>
       </section>
     </div>
