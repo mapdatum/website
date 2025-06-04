@@ -77,10 +77,30 @@ function Contact() {
 
   return (
     <div>
-      <section className="hero">
+      <section className="hero" style={{ 
+        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        color: 'white',
+        padding: '6rem 0',
+        textAlign: 'center'
+      }}>
         <div className="container">
-          <h1>Get In Touch</h1>
-          <p>Ready to leverage high-quality location data for your business? Let's discuss your requirements.</p>
+          <h1 style={{ 
+            fontSize: '4rem', 
+            marginBottom: '1.5rem',
+            color: 'white',
+            textShadow: '0 4px 12px rgba(0,0,0,0.6)',
+            fontWeight: '900'
+          }}>Get In Touch</h1>
+          <p style={{ 
+            fontSize: '1.4rem', 
+            maxWidth: '700px', 
+            margin: '0 auto',
+            color: 'rgba(255,255,255,0.95)',
+            textShadow: '0 2px 8px rgba(0,0,0,0.4)',
+            fontWeight: '500'
+          }}>
+            Ready to leverage high-quality location data for your business? Let's discuss your requirements.
+          </p>
         </div>
       </section>
 

@@ -5,8 +5,7 @@ function Footer() {
     <footer className="footer">
       <div className="container">
         <div className="footer-content">
-          <p>&copy; 2024 MapDatum. All rights reserved.</p>
-          <p>Professional location data solutions for businesses and developers.</p>
+          <p>&copy; {new Date().getFullYear()} MapDatum. All rights reserved.</p>
         </div>
       </div>
     </footer>
