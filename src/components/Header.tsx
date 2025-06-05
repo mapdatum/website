@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { COMPANY_CONFIG } from '../config/company';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,41 +19,24 @@ const Header: React.FC = () => {
                 <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
               </svg>
             </div>
-            <span className="text-xl font-bold text-gray-900">MapDatum</span>
+            <span className="text-xl font-bold text-gray-900">{COMPANY_CONFIG.name}</span>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <Link
-              to="/"
-              className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                isActive('/') 
-                  ? 'text-primary-600 bg-primary-50' 
-                  : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-              }`}
-            >
-              Home
-            </Link>
-            <Link
-              to="/about"
-              className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                isActive('/about') 
-                  ? 'text-primary-600 bg-primary-50' 
-                  : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-              }`}
-            >
-              About
-            </Link>
-            <Link
-              to="/contact"
-              className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                isActive('/contact') 
-                  ? 'text-primary-600 bg-primary-50' 
-                  : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-              }`}
-            >
-              Contact
-            </Link>
+            {COMPANY_CONFIG.navigation.main.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  isActive(item.path) 
+                    ? 'text-primary-600 bg-primary-50' 
+                    : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
           </nav>
 
           {/* Mobile menu button */}
@@ -74,39 +58,20 @@ const Header: React.FC = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-100">
             <div className="flex flex-col space-y-2">
-              <Link
-                to="/"
-                onClick={() => setIsMenuOpen(false)}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive('/') 
-                    ? 'text-primary-600 bg-primary-50' 
-                    : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                }`}
-              >
-                Home
-              </Link>
-              <Link
-                to="/about"
-                onClick={() => setIsMenuOpen(false)}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive('/about') 
-                    ? 'text-primary-600 bg-primary-50' 
-                    : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                }`}
-              >
-                About
-              </Link>
-              <Link
-                to="/contact"
-                onClick={() => setIsMenuOpen(false)}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive('/contact') 
-                    ? 'text-primary-600 bg-primary-50' 
-                    : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                }`}
-              >
-                Contact
-              </Link>
+              {COMPANY_CONFIG.navigation.main.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                    isActive(item.path) 
+                      ? 'text-primary-600 bg-primary-50' 
+                      : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
             </div>
           </div>
         )}

@@ -1,38 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-interface City {
-  name: string;
-  icon: string;
-  coords: string;
-}
-
-interface Stat {
-  number: string;
-  label: string;
-  icon: string;
-}
+import { COMPANY_CONFIG } from '../config/company';
 
 const Home: React.FC = () => {
-  const cities: City[] = [
-    { name: 'Mumbai', icon: '🏙️', coords: '19.0760°N, 72.8777°E' },
-    { name: 'Delhi', icon: '🏛️', coords: '28.7041°N, 77.1025°E' },
-    { name: 'Bangalore', icon: '💻', coords: '12.9716°N, 77.5946°E' },
-    { name: 'Hyderabad', icon: '🌆', coords: '17.3850°N, 78.4867°E' },
-    { name: 'Chennai', icon: '🏖️', coords: '13.0827°N, 80.2707°E' },
-    { name: 'Kolkata', icon: '🎭', coords: '22.5726°N, 88.3639°E' },
-    { name: 'Pune', icon: '🎓', coords: '18.5204°N, 73.8567°E' },
-    { name: 'Ahmedabad', icon: '🏭', coords: '23.0225°N, 72.5714°E' },
-    { name: 'Jaipur', icon: '🏰', coords: '26.9124°N, 75.7873°E' },
-    { name: 'Surat', icon: '💎', coords: '21.1702°N, 72.8311°E' }
-  ];
-
-  const stats: Stat[] = [
-    { number: '10+', label: 'Cities Mapped', icon: '🏙️' },
-    { number: '100K+', label: 'Data Points', icon: '📍' },
-    { number: '24hrs', label: 'Response Time', icon: '⚡' },
-    { number: '99%', label: 'Data Accuracy', icon: '🎯' }
-  ];
+  // Use config data instead of hardcoded values
+  const cities = COMPANY_CONFIG.coverage.cities;
+  const stats = COMPANY_CONFIG.stats;
 
   const poiCategories = {
     lowDensity: [
@@ -158,10 +131,10 @@ const Home: React.FC = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="text-center animate-fade-in">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              Discover Places with Purpose
+              {COMPANY_CONFIG.tagline}
             </h1>
             <p className="text-xl sm:text-2xl text-primary-100 mb-8 max-w-4xl mx-auto leading-relaxed">
-              MapDatum provides expertly curated location datasets for major Indian cities. Our comprehensive POI data includes businesses, services, facilities, and key locations—all sourced and enriched from trusted mapping platforms and refined by our data experts.
+              {COMPANY_CONFIG.fullDescription}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -196,7 +169,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-slide-up">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Why Choose MapDatum?
+              Why Choose {COMPANY_CONFIG.name}?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Experience the difference between raw data and expertly curated, enriched location intelligence
@@ -278,8 +251,6 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* POI Coverage Section */}
 
       {/* POI Coverage Section */}
       <section className="py-20 bg-gray-50">

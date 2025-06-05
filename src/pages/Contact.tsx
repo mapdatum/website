@@ -1,41 +1,42 @@
 import React from 'react';
+import { COMPANY_CONFIG, generateEmailUrl } from '../config/company';
 
 const Contact: React.FC = () => {
   const contactMethods = [
     {
       title: 'Email Us',
       description: 'Drop us a line and we\'ll get back to you within 24 hours',
-      value: 'hello@mapdatum.com',
+      value: COMPANY_CONFIG.contact.email.primary,
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 7.89a2 2 0 002.83 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
       ),
-      href: 'mailto:hello@mapdatum.com',
+      href: `mailto:${COMPANY_CONFIG.contact.email.primary}`,
       buttonText: 'Send Email'
     },
     {
       title: 'WhatsApp',
       description: 'Message us directly for quick questions and support',
-      value: '+91 98765 43210',
+      value: COMPANY_CONFIG.contact.phone.primary,
       icon: (
         <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.513"/>
         </svg>
       ),
-      href: 'https://wa.me/919876543210',
+      href: `https://wa.me/${COMPANY_CONFIG.contact.whatsapp.number}`,
       buttonText: 'Message on WhatsApp'
     },
     {
       title: 'LinkedIn',
       description: 'Connect with us professionally for partnerships and collaborations',
-      value: '@MapDatum',
+      value: COMPANY_CONFIG.social.linkedin.handle,
       icon: (
         <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
           <path fillRule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clipRule="evenodd" />
         </svg>
       ),
-      href: 'https://linkedin.com/company/mapdatum',
+      href: COMPANY_CONFIG.social.linkedin.url,
       buttonText: 'Connect on LinkedIn'
     }
   ];
@@ -45,25 +46,25 @@ const Contact: React.FC = () => {
       title: 'Request Sample Data',
       description: 'Get a sample of our POI datasets for your evaluation',
       icon: '📊',
-      href: 'mailto:hello@mapdatum.com?subject=Sample%20Data%20Request&body=Hi%20MapDatum%20team,%0A%0AI%27d%20like%20to%20request%20sample%20data%20for%20evaluation.%0A%0ACity/Region%20of%20interest:%0APOI%20categories%20needed:%0AUse%20case:%0A%0AThank%20you!'
+      href: generateEmailUrl('sampleRequest')
     },
     {
       title: 'Partnership Inquiry',
-      description: 'Explore collaboration opportunities with MapDatum',
+      description: `Explore collaboration opportunities with ${COMPANY_CONFIG.name}`,
       icon: '🤝',
-      href: 'mailto:hello@mapdatum.com?subject=Partnership%20Inquiry&body=Hi%20MapDatum%20team,%0A%0AI%27m%20interested%20in%20exploring%20partnership%20opportunities.%0A%0ACompany:%0APartnership%20type:%0AProposed%20collaboration:%0A%0ALooking%20forward%20to%20discussing%20further!'
+      href: generateEmailUrl('partnership')
     },
     {
       title: 'Custom Dataset Request',
       description: 'Need data for specific cities or custom requirements?',
       icon: '🎯',
-      href: 'mailto:hello@mapdatum.com?subject=Custom%20Dataset%20Request&body=Hi%20MapDatum%20team,%0A%0AI%20need%20a%20custom%20dataset%20with%20the%20following%20requirements:%0A%0AGeographic%20area:%0APOI%20categories:%0AData%20format%20preference:%0ATimeline:%0ABudget%20range:%0A%0APlease%20let%20me%20know%20about%20feasibility%20and%20pricing.'
+      href: generateEmailUrl('customDataset')
     },
     {
       title: 'Technical Support',
       description: 'Get help with data integration and technical questions',
       icon: '🛠️',
-      href: 'mailto:hello@mapdatum.com?subject=Technical%20Support&body=Hi%20MapDatum%20team,%0A%0AI%20need%20technical%20support%20with:%0A%0AIssue%20description:%0AData%20format:%0AIntegration%20platform:%0AError%20details%20(if%20any):%0A%0AThank%20you!'
+      href: generateEmailUrl('support')
     }
   ];
 
@@ -101,7 +102,7 @@ const Contact: React.FC = () => {
             </h1>
             <p className="text-xl text-primary-100 leading-relaxed">
               Ready to enhance your applications with high-quality location data? 
-              We'd love to discuss your requirements and show you what MapDatum can offer.
+              We'd love to discuss your requirements and show you what {COMPANY_CONFIG.name} can offer.
             </p>
           </div>
         </div>
@@ -131,6 +132,8 @@ const Contact: React.FC = () => {
                 <a
                   href={method.href}
                   className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {method.buttonText}
                 </a>
@@ -256,13 +259,13 @@ const Contact: React.FC = () => {
                 Can you provide data for specific cities or regions?
               </h3>
               <p className="text-gray-600">
-                Absolutely! While we currently focus on India's top 12-15 cities, we can create custom datasets for specific geographic areas based on your requirements.
+                Absolutely! While we currently focus on {COMPANY_CONFIG.coverage.countries[0]}'s top {COMPANY_CONFIG.coverage.cities.length} cities, we can create custom datasets for specific geographic areas based on your requirements.
               </p>
             </div>
 
             <div className="bg-white rounded-lg p-6 shadow-sm">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                What makes MapDatum different from free data sources?
+                What makes {COMPANY_CONFIG.name} different from free data sources?
               </h3>
               <p className="text-gray-600">
                 Our data goes through rigorous verification, enrichment, and quality assurance processes. Unlike raw open data, our datasets are cleaned, structured, and enhanced with business intelligence that's ready for immediate use.
@@ -279,10 +282,10 @@ const Contact: React.FC = () => {
             Ready to Get Started?
           </h2>
           <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-            Don't let poor quality data hold back your projects. Contact us today and discover the MapDatum difference.
+            Don't let poor quality data hold back your projects. Contact us today and discover the {COMPANY_CONFIG.name} difference.
           </p>
           <a
-            href="mailto:hello@mapdatum.com"
+            href={`mailto:${COMPANY_CONFIG.contact.email.primary}`}
             className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary-600 bg-white hover:bg-gray-50 transition-colors shadow-lg"
           >
             Email Us Now
