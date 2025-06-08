@@ -3,252 +3,285 @@ import { Link } from 'react-router-dom';
 import { COMPANY_CONFIG } from '../config/company';
 
 const About: React.FC = () => {
-  const advantages = [
+  const stats = [
+    { number: "275K+", label: "Data Points", description: "Verified locations" },
+    { number: "99.8%", label: "Accuracy", description: "Quality assured" },
+    { number: "15", label: "Cities", description: "Coverage areas" },
+    { number: "24h", label: "Updates", description: "Refresh cycle" }
+  ];
+
+  const capabilities = [
     {
-      title: "Expert Curation",
-      description: "Our data experts manually verify and enrich each POI entry, ensuring accuracy and completeness that raw open data can't match.",
-      icon: "🎯"
+      title: "Geospatial Intelligence",
+      description: "Advanced algorithms process millions of geographic data points with precision validation pipelines",
+      features: ["Machine Learning Validation", "Real-time Processing", "Spatial Analytics"],
+      metric: "99.8% Accuracy",
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-1.447-.894L15 4m0 13V4m-6 3l6-3" />
+        </svg>
+      )
     },
     {
-      title: "Quality Assurance",
-      description: "Multi-stage validation process including automated checks, manual verification, and continuous monitoring for data integrity.",
-      icon: "✅"
+      title: "Data Engineering",
+      description: "Scalable infrastructure handling massive datasets with enterprise-grade performance and reliability",
+      features: ["Auto-scaling Systems", "Quality Assurance", "API Infrastructure"],
+      metric: "24/7 Processing",
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+        </svg>
+      )
     },
     {
-      title: "Rich Attributes",
-      description: "Beyond basic location data, we provide detailed attributes like business hours, contact information, categories, and local insights.",
-      icon: "📊"
-    },
-    {
-      title: "Regular Updates",
-      description: "Continuous maintenance and updates ensure your applications always have the most current and accurate location information.",
-      icon: "🔄"
+      title: "Market Intelligence",
+      description: "Deep understanding of Indian business patterns, regional nuances, and local market dynamics",
+      features: ["Local Expertise", "Business Intelligence", "Regional Analysis"],
+      metric: "15+ Cities",
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      )
     }
   ];
 
   const values = [
     {
-      title: "Data Integrity",
-      description: "We believe that quality data is the foundation of successful location-based applications.",
-      icon: "🛡️"
+      title: "Engineering Excellence",
+      description: "Every system is built with precision, scalability, and performance as core principles",
+      icon: "⚡",
+      highlight: "Precision First"
     },
     {
-      title: "Customer Success",
-      description: "Your success with location data drives our commitment to excellence and continuous improvement.",
-      icon: "🤝"
+      title: "Data Integrity", 
+      description: "Rigorous validation ensures enterprise-grade reliability in every data point we deliver",
+      icon: "🛡️",
+      highlight: "Quality Assured"
     },
     {
-      title: "Innovation",
-      description: "We continuously explore new ways to enhance and deliver location intelligence solutions.",
-      icon: "💡"
+      title: "Innovation Drive",
+      description: "Continuously pushing boundaries with AI, machine learning, and advanced geospatial technology",
+      icon: "🚀",
+      highlight: "Future Ready"
     }
   ];
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary-600 to-primary-700 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-              About {COMPANY_CONFIG.name}
+      {/* Hero Section - Same style */}
+      <section className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-black opacity-10"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+          <div className="text-center">
+            <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full text-primary-100 text-sm font-medium mb-6">
+              <span className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
+              Building India's Location Intelligence Infrastructure
+            </div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+              About{' '}
+              <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
+                {COMPANY_CONFIG.name}
+              </span>
             </h1>
-            <p className="text-xl text-primary-100 leading-relaxed">
-              We're on a mission to provide the highest quality location data solutions for {COMPANY_CONFIG.coverage.countries[0]}'s rapidly growing digital ecosystem.
+            <p className="text-xl sm:text-2xl text-primary-100 mb-8 max-w-4xl mx-auto leading-relaxed">
+              Engineering the future of location intelligence through precision data science and advanced geospatial technology
             </p>
+          </div>
+        </div>
+
+        {/* Floating Elements */}
+        <div className="absolute top-20 left-10 w-20 h-20 bg-white opacity-5 rounded-full animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-32 h-32 bg-white opacity-5 rounded-full animate-pulse delay-1000"></div>
+        <div className="absolute bottom-20 left-20 w-16 h-16 bg-white opacity-5 rounded-full animate-pulse delay-500"></div>
+      </section>
+
+      {/* Stats Overview - Sophisticated Layout */}
+      <section className="py-20 bg-white relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+
+          {/* Company Story - Asymmetric Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-center">
+            <div className="lg:col-span-3">
+              <div className="space-y-8">
+                <div>
+                  <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                    Engineering Precision 
+                    <span className="block text-primary-600">at Scale</span>
+                  </h2>
+                  <p className="text-xl text-gray-600 leading-relaxed">
+                    {COMPANY_CONFIG.name} transforms India's complex geographic data landscape into 
+                    enterprise-ready intelligence through cutting-edge technology and deep market understanding.
+                  </p>
+                </div>
+                
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-2 h-2 bg-primary-600 rounded-full mt-3 flex-shrink-0"></div>
+                    <p className="text-lg text-gray-600">
+                      <strong className="text-gray-900">Born from necessity:</strong> India's digital transformation 
+                      required location data that truly understood local market complexity and business patterns.
+                    </p>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <div className="w-2 h-2 bg-primary-600 rounded-full mt-3 flex-shrink-0"></div>
+                    <p className="text-lg text-gray-600">
+                      <strong className="text-gray-900">Built for scale:</strong> Our systems process millions 
+                      of data points daily, delivering enterprise-grade accuracy and real-time updates.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="lg:col-span-2">
+              <div className="relative">
+                <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-3xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                  <div className="text-center space-y-6">
+                    <div className="w-16 h-16 bg-primary-600 rounded-2xl mx-auto flex items-center justify-center">
+                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-primary-600 mb-2">Engineered for India</div>
+                      <p className="text-gray-700">
+                        Purpose-built systems understanding the unique challenges of Indian markets, 
+                        from tier-1 metros to emerging urban centers.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Vision & Mission - Redesigned */}
-      <section className="py-20 bg-white">
+      {/* Core Capabilities - Advanced Grid */}
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Our Story & Purpose
-            </h2>
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Technical Capabilities</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Driven by a passion for precision and powered by innovation, we're building {COMPANY_CONFIG.coverage.countries[0]}'s most trusted location intelligence platform
+              Enterprise-grade infrastructure delivering location intelligence at scale
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-            {/* Vision Card */}
-            <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-8 hover:shadow-xl transition-shadow">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center mr-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="space-y-12">
+            {capabilities.map((capability, index) => (
+              <div key={index} className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
+                index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
+              }`}>
+                <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
+                  <div className="space-y-6">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center">
+                        <span className="text-primary-600">{capability.icon}</span>
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-gray-900">{capability.title}</h3>
+                        <div className="inline-flex items-center px-3 py-1 bg-primary-100 text-primary-600 rounded-full text-sm font-medium mt-1">
+                          {capability.metric}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <p className="text-lg text-gray-600 leading-relaxed">
+                      {capability.description}
+                    </p>
+                    
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                      {capability.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-center space-x-2">
+                          <svg className="w-5 h-5 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                          <span className="text-sm font-medium text-gray-700">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                
+                <div className={index % 2 === 1 ? 'lg:col-start-1' : ''}>
+                  {/* Remove the visual entirely - let the content speak for itself */}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Vision & Mission - Side by Side Premium */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="bg-gradient-to-br from-primary-600 to-primary-700 rounded-3xl p-8 lg:p-12 text-white relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16"></div>
+              <div className="relative z-10">
+                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Our Vision</h3>
+                <h3 className="text-3xl font-bold mb-6">Our Vision</h3>
+                <p className="text-xl text-primary-100 leading-relaxed">
+                  To become India's definitive location intelligence platform, empowering businesses 
+                  with precision-engineered data that drives innovation and growth across the digital economy.
+                </p>
               </div>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                To become {COMPANY_CONFIG.coverage.countries[0]}'s most trusted provider of location intelligence, empowering businesses and developers with accurate, enriched, and actionable geographic data that drives innovation and growth.
-              </p>
             </div>
 
-            {/* Mission Card */}
-            <div className="bg-gradient-to-br from-secondary-50 to-secondary-100 rounded-2xl p-8 hover:shadow-xl transition-shadow">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-secondary-600 rounded-full flex items-center justify-center mr-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-gray-50 rounded-3xl p-8 lg:p-12 relative overflow-hidden">
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary-100 rounded-full -ml-16 -mb-16"></div>
+              <div className="relative z-10">
+                <div className="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mb-6">
+                  <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Our Mission</h3>
+                <h3 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h3>
+                <p className="text-xl text-gray-600 leading-relaxed">
+                  To transform raw geographic information into enterprise-ready intelligence through 
+                  advanced data science, rigorous quality assurance, and deep understanding of Indian market dynamics.
+                </p>
               </div>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                {COMPANY_CONFIG.name} bridges the gap between raw location data and business-ready intelligence. We transform scattered geographic information into structured, verified, and enriched datasets that businesses can rely on.
-              </p>
-            </div>
-          </div>
-
-          {/* India Focus Section */}
-          <div className="bg-gray-50 rounded-2xl p-8 text-center">
-            <div className="max-w-4xl mx-auto">
-              <div className="flex justify-center mb-6">
-                <div className="w-16 h-16 bg-primary-600 rounded-full flex items-center justify-center">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Built for {COMPANY_CONFIG.coverage.countries[0]}'s Digital Future</h3>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Starting with comprehensive coverage of {COMPANY_CONFIG.coverage.countries[0]}'s top {COMPANY_CONFIG.coverage.cities.length} cities, we understand the unique challenges and opportunities in the Indian market. Our deep local knowledge combined with cutting-edge technology ensures data that truly serves {COMPANY_CONFIG.coverage.countries[0]}'s growing digital ecosystem.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why Curated Data Matters */}
+      {/* Core Values - Premium Cards */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Curated Data vs. Raw Open Data
-            </h2>
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Engineering Principles</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Understanding the critical difference between raw data sources and expertly curated location intelligence
+              The foundational principles that guide our technology and business decisions
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-            {/* Raw Data */}
-            <div className="bg-white rounded-lg shadow-lg p-8 border-l-4 border-red-500">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                <span className="text-red-500 mr-3">⚠️</span>
-                Raw Open Data
-              </h3>
-              <ul className="space-y-3 text-gray-600">
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  Inconsistent data quality and completeness
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  Missing or outdated business information
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  Requires extensive cleaning and validation
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  Limited attribute richness
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  No quality assurance or support
-                </li>
-              </ul>
-            </div>
-
-            {/* Curated Data */}
-            <div className="bg-white rounded-lg shadow-lg p-8 border-l-4 border-green-500">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                <span className="text-green-500 mr-3">✅</span>
-                {COMPANY_CONFIG.name} Curated Data
-              </h3>
-              <ul className="space-y-3 text-gray-600">
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">•</span>
-                  Verified accuracy and completeness
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">•</span>
-                  Rich business attributes and metadata
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">•</span>
-                  Ready-to-use structured formats
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">•</span>
-                  Enhanced with local insights
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">•</span>
-                  Continuous updates and support
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Advantages Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {advantages.map((advantage, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
-                <div className="text-4xl mb-4">{advantage.icon}</div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">{advantage.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{advantage.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team & Expertise */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Expertise in Geospatial Technology
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our team brings together years of experience in geospatial data, technology, and the Indian market
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {values.map((value, index) => (
-              <div key={index} className="text-center p-8 rounded-2xl bg-gray-50 hover:shadow-lg transition-shadow">
-                <div className="text-4xl mb-6">{value.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{value.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{value.description}</p>
+              <div key={index} className="group bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-500 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-primary-50 rounded-full -mr-12 -mt-12 group-hover:scale-150 transition-transform duration-500"></div>
+                <div className="relative z-10">
+                  <div className="text-4xl mb-6">{value.icon}</div>
+                  <div className="space-y-4">
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">{value.title}</h3>
+                      <div className="inline-flex items-center px-3 py-1 bg-primary-100 text-primary-600 rounded-full text-sm font-medium">
+                        {value.highlight}
+                      </div>
+                    </div>
+                    <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                  </div>
+                </div>
               </div>
             ))}
-          </div>
-
-          {/* CTA Section */}
-          <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-8 text-center text-white">
-            <h3 className="text-2xl font-bold mb-4">Ready to Experience the {COMPANY_CONFIG.name} Difference?</h3>
-            <p className="text-primary-100 mb-6 max-w-2xl mx-auto">
-              Join forward-thinking businesses who trust {COMPANY_CONFIG.name} for their location data needs. Let's discuss how our curated datasets can power your next innovation.
-            </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary-600 bg-white hover:bg-gray-50 transition-colors shadow-lg"
-            >
-              Get Started Today
-              <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
           </div>
         </div>
       </section>

@@ -1,125 +1,45 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { COMPANY_CONFIG } from '../config/company';
+import POIGlobe from '../components/POIGlobe';
+import CTASection from '../components/CTASection';
 
 const Home: React.FC = () => {
-  // Use config data instead of hardcoded values
-  const cities = COMPANY_CONFIG.coverage.cities;
-  const stats = COMPANY_CONFIG.stats;
-
-  const poiCategories = {
-    lowDensity: [
-      { name: 'Airports', icon: '✈️', description: 'Major airports and airfields' },
-      { name: 'Stadiums', icon: '🏟️', description: 'Sports venues and stadiums' },
-      { name: 'Universities', icon: '🎓', description: 'Higher education institutions' },
-      { name: 'Power Plants', icon: '⚡', description: 'Energy generation facilities' },
-      { name: 'Dams', icon: '🏞️', description: 'Water management infrastructure' },
-    ],
-    mediumDensity: [
-      { name: 'Hospitals', icon: '🏥', description: 'Healthcare facilities' },
-      { name: 'Schools', icon: '🏫', description: 'Educational institutions' },
-      { name: 'Shopping Malls', icon: '🏬', description: 'Retail centers' },
-      { name: 'Religious Places', icon: '🛕', description: 'Places of worship' },
-      { name: 'Parks & Gardens', icon: '🌳', description: 'Recreational green spaces' },
-      { name: 'Police Stations', icon: '👮', description: 'Law enforcement facilities' },
-    ],
-    highDensity: [
-      { name: 'Restaurants', icon: '🍽️', description: 'Dining establishments' },
-      { name: 'Fuel Stations', icon: '⛽', description: 'Petrol and gas stations' },
-      { name: 'ATMs', icon: '🏧', description: 'Banking services' },
-      { name: 'Pharmacies', icon: '💊', description: 'Medical stores' },
-      { name: 'Gyms & Fitness', icon: '🏋️', description: 'Fitness centers' },
-      { name: 'Salons & Spas', icon: '💇', description: 'Beauty and wellness' },
-      { name: 'General Stores', icon: '🛍️', description: 'Local retail shops' },
-    ],
-  };
-
-  const valueProps = [
+  const challenges = [
     {
-      title: "Data Quality",
-      description: "Meticulously curated and verified POI data that you can trust for critical business decisions",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      )
+      problem: "Outdated Location Data",
+      solution: "Real-time verified updates every 24 hours",
+      icon: "🔄"
     },
     {
-      title: "Precision & Speed",
-      description: "Accurate location coordinates and rich metadata delivered in formats ready for immediate integration",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      )
+      problem: "Generic Global Datasets",
+      solution: "India-focused with local market insights",
+      icon: "🇮🇳"
     },
     {
-      title: "Local Expertise",
-      description: "Deep understanding of Indian markets with local insights that global datasets often miss",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-      )
+      problem: "Poor Data Accuracy",
+      solution: "99.9% accuracy with ground-truth validation",
+      icon: "🎯"
     }
   ];
 
-  const deliveryMethods = [
+  const useCases = [
     {
-      title: "Amazon S3",
-      description: "Direct delivery to your S3 buckets with automated uploads and versioning",
-      icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12.5 4.5C14.6 4.5 16.5 5.9 17 7.9L17.8 7.7C18.9 7.4 20 8.1 20.3 9.2C20.6 10.3 19.9 11.4 18.8 11.7L17.9 12L18 12.5C18 13.9 16.9 15 15.5 15H7C5.3 15 4 13.7 4 12S5.3 9 7 9H7.3L7.8 8.3C8.9 6.9 10.6 6 12.5 6V4.5Z" />
-        </svg>
-      )
+      title: "Retail & E-commerce",
+      description: "Optimize delivery routes, analyze market density, identify expansion opportunities",
+      icon: "🛍️",
+      metrics: "85K+ retail POIs"
     },
     {
-      title: "Google Cloud Storage",
-      description: "Seamless integration with GCS buckets and Google Cloud ecosystem",
-      icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2M21 9V7L15 1H5C3.9 1 3 1.9 3 3V21C3 22.1 3.9 23 5 23H19C20.1 23 21 22.1 21 21V9M19 9H14V4H19V9Z" />
-        </svg>
-      )
+      title: "Financial Services",
+      description: "ATM placement, branch optimization, competitor analysis",
+      icon: "🏦",
+      metrics: "45K+ financial POIs"
     },
     {
-      title: "Azure Blob Storage",
-      description: "Enterprise-grade delivery to Microsoft Azure with security compliance",
-      icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2L2 7L12 12L22 7L12 2M2 17L12 22L22 17M2 12L12 17L22 12" />
-        </svg>
-      )
-    },
-    {
-      title: "FTP/SFTP",
-      description: "Secure file transfer to your existing infrastructure and systems",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
-        </svg>
-      )
-    },
-    {
-      title: "Data Dumps",
-      description: "Complete datasets delivered as compressed files in your preferred format",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-        </svg>
-      )
-    },
-    {
-      title: "REST API",
-      description: "Real-time data access through our robust API platform (Coming Soon)",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z" />
-        </svg>
-      ),
-      comingSoon: true
+      title: "Real Estate",
+      description: "Property valuation, neighborhood analysis, amenity mapping",
+      icon: "🏠",
+      metrics: "500K+ location insights"
     }
   ];
 
@@ -129,307 +49,198 @@ const Home: React.FC = () => {
       <section className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-10"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-          <div className="text-center animate-fade-in">
+          <div className="text-center">
+            <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full text-primary-100 text-sm font-medium mb-6">
+              <span className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
+              500K+ locations verified in real-time
+            </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              {COMPANY_CONFIG.tagline}
+              India's Most Accurate<br />
+              <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
+                Location Intelligence
+              </span>
             </h1>
             <p className="text-xl sm:text-2xl text-primary-100 mb-8 max-w-4xl mx-auto leading-relaxed">
-              {COMPANY_CONFIG.fullDescription}
+              Power your business with precision POI data across 15+ major Indian cities.
+              From hyperlocal insights to enterprise-scale location intelligence.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                to="/contact"
-                className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary-600 bg-white hover:bg-gray-50 transition-colors shadow-lg"
+                to="/data"
+                className="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-primary-600 bg-white hover:bg-gray-50 transition-colors shadow-lg"
               >
-                Get Started
+                See Live Data Demo
                 <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h8m2 2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v11l4-4h8a2 2 0 002-2z" />
                 </svg>
               </Link>
-              <Link
-                to="/about"
-                className="inline-flex items-center px-8 py-3 border-2 border-white text-base font-medium rounded-md text-white hover:bg-white hover:text-primary-600 transition-colors"
-              >
-                Learn More
-              </Link>
+              <button className="inline-flex items-center px-8 py-4 border-2 border-white text-base font-medium rounded-lg text-white hover:bg-white hover:text-primary-600 transition-colors">
+                <svg className="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                </svg>
+                Watch 2-min Demo
+              </button>
             </div>
           </div>
         </div>
 
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-20 h-20 bg-white opacity-5 rounded-full"></div>
-          <div className="absolute top-40 right-20 w-32 h-32 bg-white opacity-5 rounded-full"></div>
-          <div className="absolute bottom-20 left-20 w-16 h-16 bg-white opacity-5 rounded-full"></div>
-        </div>
+        {/* Floating Elements */}
+        <div className="absolute top-20 left-10 w-20 h-20 bg-white opacity-5 rounded-full animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-32 h-32 bg-white opacity-5 rounded-full animate-pulse delay-1000"></div>
+        <div className="absolute bottom-20 left-20 w-16 h-16 bg-white opacity-5 rounded-full animate-pulse delay-500"></div>
       </section>
 
-      {/* Value Proposition */}
+      {/* Live Data Showcase */}
+      <POIGlobe />
+
+      {/* Problem-Solution Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 animate-slide-up">
+          <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Why Choose {COMPANY_CONFIG.name}?
+              Stop Struggling with Poor Location Data
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Experience the difference between raw data and expertly curated, enriched location intelligence
+              Most location datasets are outdated, inaccurate, or don't understand Indian markets.
+              We built the solution you've been looking for.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {valueProps.map((prop, index) => (
-              <div key={index} className="text-center p-8 rounded-2xl bg-gray-50 hover:shadow-lg transition-shadow">
-                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-primary-600">{prop.icon}</span>
+            {challenges.map((item, index) => (
+              <div key={index} className="relative p-8 bg-gradient-to-br from-red-50 to-green-50 rounded-2xl hover:shadow-lg transition-shadow">
+                <div className="text-center">
+                  <div className="text-4xl mb-4">{item.icon}</div>
+                  <div className="space-y-4">
+                    <div className="p-4 bg-red-100 rounded-lg">
+                      <div className="text-red-800 font-medium text-sm mb-1">❌ The Problem</div>
+                      <div className="text-red-900 font-semibold">{item.problem}</div>
+                    </div>
+                    <div className="p-4 bg-green-100 rounded-lg">
+                      <div className="text-green-800 font-medium text-sm mb-1">✅ Our Solution</div>
+                      <div className="text-green-900 font-semibold">{item.solution}</div>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{prop.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{prop.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Stats Section - Professional Redesign */}
+      {/* Use Cases & Industry Applications */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              Powering India's Leading Companies
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              From startups to enterprises, our location intelligence drives better business decisions
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {useCases.map((useCase, index) => (
+              <div key={index} className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                <div className="text-4xl mb-4">{useCase.icon}</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{useCase.title}</h3>
+                <p className="text-gray-600 mb-4 leading-relaxed">{useCase.description}</p>
+                <div className="inline-flex items-center px-3 py-1 bg-primary-100 text-primary-800 rounded-full text-sm font-medium">
+                  {useCase.metrics}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Quick Stats */}
+          <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Trusted by Data-Driven Teams</h3>
+              <p className="text-gray-600">Real metrics from real businesses using our data</p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary-600 mb-1">500K+</div>
+                <div className="text-gray-600 text-sm">Verified POIs</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary-600 mb-1">15+</div>
+                <div className="text-gray-600 text-sm">Major Cities</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary-600 mb-1">99.9%</div>
+                <div className="text-gray-600 text-sm">Accuracy Rate</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary-600 mb-1">24h</div>
+                <div className="text-gray-600 text-sm">Update Cycle</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof & Testimonial */}
       <section className="py-20 bg-gradient-to-r from-primary-600 to-primary-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl font-bold text-white mb-4">Trusted by Data-Driven Organizations</h2>
-            <p className="text-primary-100 max-w-2xl mx-auto">Delivering excellence through verified metrics and proven performance</p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {stats.map((stat, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1">
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    {index === 0 && (
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                      </svg>
-                    )}
-                    {index === 1 && (
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                      </svg>
-                    )}
-                    {index === 2 && (
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    )}
-                    {index === 3 && (
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    )}
-                  </div>
-                  <div className="text-4xl font-bold text-white mb-2">{stat.number}</div>
-                  <div className="text-primary-100 font-medium">{stat.label}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Cities Coverage */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Cities Currently Covered</h2>
-            <p className="text-gray-600">Major Indian metropolitan areas with comprehensive POI datasets</p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-            {cities.map((city, index) => (
-              <div key={index} className="text-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                <div className="text-2xl mb-2">{city.icon}</div>
-                <h3 className="font-semibold text-gray-900 mb-1">{city.name}</h3>
-                <p className="text-xs text-gray-500">{city.coords}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* POI Coverage Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Current Coverage: India
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive POI datasets across top 12-15 cities, categorized by density and type
-            </p>
-          </div>
-
-          {/* POI Categories Grid */}
-          <div className="space-y-12">
-            {/* Low Density */}
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <div className="flex items-center mb-6">
-                <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
-                <h3 className="text-2xl font-bold text-gray-900">📦 Low Density</h3>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-                {poiCategories.lowDensity.map((poi, index) => (
-                  <div key={index} className="bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition-colors">
-                    <div className="text-2xl mb-2">{poi.icon}</div>
-                    <h4 className="font-semibold text-gray-900 mb-1">{poi.name}</h4>
-                    <p className="text-sm text-gray-600">{poi.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Medium Density */}
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <div className="flex items-center mb-6">
-                <div className="w-3 h-3 bg-yellow-500 rounded-full mr-3"></div>
-                <h3 className="text-2xl font-bold text-gray-900">📦 Medium Density</h3>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
-                {poiCategories.mediumDensity.map((poi, index) => (
-                  <div key={index} className="bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition-colors">
-                    <div className="text-2xl mb-2">{poi.icon}</div>
-                    <h4 className="font-semibold text-gray-900 mb-1">{poi.name}</h4>
-                    <p className="text-sm text-gray-600">{poi.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* High Density */}
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <div className="flex items-center mb-6">
-                <div className="w-3 h-3 bg-red-500 rounded-full mr-3"></div>
-                <h3 className="text-2xl font-bold text-gray-900">📦 High Density</h3>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-4">
-                {poiCategories.highDensity.map((poi, index) => (
-                  <div key={index} className="bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition-colors">
-                    <div className="text-2xl mb-2">{poi.icon}</div>
-                    <h4 className="font-semibold text-gray-900 mb-1">{poi.name}</h4>
-                    <p className="text-sm text-gray-600">{poi.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Data Delivery Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Flexible Data Delivery
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Get your data delivered exactly how you need it, when you need it. We support all major cloud platforms and delivery methods.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {deliveryMethods.map((method, index) => (
-              <div key={index} className={`bg-gray-50 rounded-2xl p-8 hover:shadow-xl transition-shadow relative ${method.comingSoon ? 'border-2 border-secondary-200' : ''}`}>
-                {method.comingSoon && (
-                  <div className="absolute top-4 right-4 bg-secondary-500 text-white text-xs px-3 py-1 rounded-full font-semibold">
-                    Coming Soon
-                  </div>
-                )}
-                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-6">
-                  <span className={`${method.comingSoon ? 'text-secondary-600' : 'text-primary-600'}`}>
-                    {method.icon}
-                  </span>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{method.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{method.description}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Delivery Features */}
-          <div className="mt-16 bg-gradient-to-r from-primary-50 to-secondary-50 rounded-2xl p-8">
-            <div className="max-w-4xl mx-auto">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-                Delivery Features & Guarantees
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                    </svg>
-                  </div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Secure Transfer</h4>
-                  <p className="text-sm text-gray-600">End-to-end encryption for all data transfers</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-secondary-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                    </svg>
-                  </div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Automated Updates</h4>
-                  <p className="text-sm text-gray-600">Scheduled delivery of updated datasets</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                  </div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Multiple Formats</h4>
-                  <p className="text-sm text-gray-600">JSON, CSV, GeoJSON, and custom formats</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-secondary-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <h4 className="font-semibold text-gray-900 mb-2">24/7 Support</h4>
-                  <p className="text-sm text-gray-600">Technical support for integration and delivery</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-primary-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Ready to Get Started?
-          </h2>
-          <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-            Contact us today to explore our data offerings or request customized datasets for your specific needs.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/contact"
-              className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary-600 bg-white hover:bg-gray-50 transition-colors shadow-lg"
-            >
-              Contact Us
-              <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 7.89a2 2 0 002.83 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          <div className="text-center">
+            <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full text-primary-100 text-sm font-medium mb-8">
+              <svg className="w-4 h-4 mr-2 text-blue-300" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
-            </Link>
-            <a
-              href="mailto:hello@mapdatum.com"
-              className="inline-flex items-center px-8 py-3 border-2 border-white text-base font-medium rounded-md text-white hover:bg-white hover:text-primary-600 transition-colors"
-            >
-              Request Demo
-            </a>
+              Powered by cutting-edge geospatial technology
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+              "Finally, location data that actually works for Indian businesses"
+            </h2>
+            <p className="text-xl text-primary-100 mb-8 max-w-3xl mx-auto">
+              Our precision location intelligence has helped companies save millions in operational costs,
+              optimize delivery routes, and make smarter expansion decisions.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/data"
+                className="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-primary-600 bg-white hover:bg-gray-50 transition-colors shadow-lg"
+              >
+                Explore Sample Data
+                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-4-4m4 4l4-4m5 1a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </Link>
+              <Link
+                to="/contact"
+                className="inline-flex items-center px-8 py-4 border-2 border-white text-base font-medium rounded-lg text-white hover:bg-white hover:text-primary-600 transition-colors"
+              >
+                Start Free Trial
+                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
+
+      {/* CTA Section - Blended Design */}
+      <CTASection
+        variant="primary"
+        title="Ready to upgrade your location intelligence?"
+        description="Stop making decisions based on outdated data. Get started with India's most accurate location intelligence platform."
+        features={['Free sample data included', 'Setup in under 24 hours']}
+        primaryButton={{
+          text: 'Get Your Custom Quote',
+          href: '/contact',
+          type: 'link'
+        }}
+        secondaryButton={{
+          text: 'Browse All Data',
+          href: '/data',
+          type: 'link'
+        }}
+      />
     </div>
   );
 };
 
-export default Home; 
+export default Home;

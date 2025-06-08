@@ -141,6 +141,7 @@ export const COMPANY_CONFIG = {
   navigation: {
     main: [
       { name: 'Home', path: '/' },
+      { name: 'Data', path: '/data' },
       { name: 'About', path: '/about' },
       { name: 'Contact', path: '/contact' }
     ],

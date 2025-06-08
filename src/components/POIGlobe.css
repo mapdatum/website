@@ -1,0 +1,1294 @@
+.poi-globe-simple {
+  display: flex;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f1f5f9;
+}
+
+/* Left side - Globe section */
+.globe-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: #f8fafc;
+}
+
+.globe-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #f8fafc, #f1f5f9);
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.08),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Re-enable pointer events only for canvas to allow auto-rotation but block interaction */
+.globe-container canvas {
+  display: block !important;
+  margin: 0 auto !important;
+  pointer-events: none !important;
+  touch-action: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  -khtml-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+/* Prevent context menu and selection */
+.globe-container * {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Prevent zoom on mobile */
+.globe-container {
+  touch-action: none;
+  -ms-touch-action: none;
+}
+
+/* Right side - Details section */
+.details-section {
+  flex: 1;
+  padding: 40px;
+  background: #ffffff;
+  border-left: 1px solid #f1f5f9;
+}
+
+.details-box {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.poi-badge {
+  display: inline-block;
+  background: #dbeafe;
+  color: #3b82f6;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  width: fit-content;
+}
+
+.poi-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 16px 0;
+  line-height: 1.2;
+}
+
+.poi-location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.poi-location svg {
+  color: #ef4444;
+}
+
+.poi-description {
+  color: #4b5563;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 32px 0;
+}
+
+.poi-progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.progress-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d1d5db;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: #3b82f6;
+  transform: scale(1.2);
+}
+
+.progress-counter {
+  font-size: 14px;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .poi-globe-simple {
+    flex-direction: column;
+    height: auto !important;
+  }
+  
+  .globe-section {
+    padding: 30px;
+  }
+  
+  .globe-container {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .details-section {
+    padding: 30px;
+    border-left: none;
+    border-top: 1px solid #f1f5f9;
+  }
+  
+  .poi-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .globe-section {
+    padding: 20px;
+  }
+  
+  .globe-container {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .details-section {
+    padding: 20px;
+  }
+  
+  .poi-title {
+    font-size: 20px;
+  }
+}
+
+.poi-showcase {
+  background: #ffffff;
+  padding: 40px 0;
+  overflow: hidden;
+  max-height: 600px;
+  height: 600px;
+}
+
+/* Header - Responsive */
+.showcase-header {
+  text-align: center;
+  margin-bottom: 40px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+}
+
+.showcase-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 12px 0;
+  line-height: 1.2;
+}
+
+.showcase-subtitle {
+  font-size: 16px;
+  color: #6b7280;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Main Content - Responsive Layout */
+.showcase-content {
+  display: flex;
+  align-items: stretch;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  gap: 60px;
+  height: 380px;
+}
+
+/* Globe Section */
+.globe-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 380px;
+  min-width: 0; /* Prevent flex overflow */
+}
+
+.globe-wrapper {
+  position: relative;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  overflow: visible;
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  background: radial-gradient(circle at 30% 30%, #fafbfc, #f3f4f6);
+  flex-shrink: 0;
+}
+
+/* Custom Sophisticated Marker - Brand Colors & Smaller Size */
+.custom-marker {
+  position: relative;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.marker-pin {
+  position: relative;
+  width: 16px;
+  height: 24px;
+  z-index: 2;
+}
+
+.marker-pin::before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Match your brand colors */
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  border: 2px solid #ffffff;
+  box-shadow: 0 3px 8px rgba(102, 126, 234, 0.4); /* Use your brand blue for shadow */
+  animation: markerBounce 3s ease-in-out infinite;
+  top: 0;
+  left: 0;
+}
+
+.marker-pin::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 4px;
+  height: 4px;
+  background: #ffffff;
+  border-radius: 50%;
+  z-index: 3;
+  transform: rotate(45deg);
+}
+
+.marker-pulse {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #667eea; /* Use your brand blue */
+  border-radius: 50%;
+  animation: markerPulse 2s ease-out infinite;
+  z-index: 1;
+}
+
+@keyframes markerBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: rotate(-45deg) translateY(0);
+  }
+  40% {
+    transform: rotate(-45deg) translateY(-2px);
+  }
+  60% {
+    transform: rotate(-45deg) translateY(-1px);
+  }
+}
+
+@keyframes markerPulse {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+/* Details Section - Responsive */
+.details-section {
+  flex: 1;
+  height: 380px;
+  display: flex;
+  align-items: stretch;
+  min-width: 0; /* Prevent flex overflow */
+}
+
+.details-card {
+  background: #ffffff;
+  border: 1px solid #f3f4f6;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateY(0);
+  opacity: 1;
+  min-width: 0; /* Prevent overflow */
+}
+
+.details-card.updating {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  border-color: #e0e7ff;
+}
+
+/* Smooth content transitions */
+.details-card * {
+  transition: all 0.4s ease-out;
+}
+
+.details-card.updating .poi-name,
+.details-card.updating .poi-description,
+.details-card.updating .metric-value {
+  transform: translateY(-2px);
+}
+
+/* Category Badge */
+.category-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.badge-text {
+  background: rgba(102, 126, 234, 0.1); /* Your brand blue with transparency */
+  color: #667eea; /* Your brand blue */
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.accuracy-badge {
+  background: #ecfdf5;
+  color: #065f46;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+/* Main Info */
+.poi-name {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 12px 0;
+  line-height: 1.2;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.location-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.location-icon {
+  width: 16px;
+  height: 16px;
+  color: #667eea; /* Your brand blue */
+  flex-shrink: 0;
+}
+
+.poi-description {
+  color: #4b5563;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 20px 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Data Metrics */
+.data-metrics {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  padding: 16px 0;
+  border-top: 1px solid #f3f4f6;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.metric {
+  text-align: center;
+  flex: 1;
+}
+
+.metric-value {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+
+.metric-label {
+  font-size: 11px;
+  color: #9ca3af;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Progress */
+.showcase-progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  gap: 10px;
+}
+
+.progress-indicators {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.progress-dot.active {
+  background: #667eea; /* Your brand blue */
+  transform: scale(1.4);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2); /* Your brand blue with transparency */
+}
+
+.progress-text {
+  font-size: 13px;
+  color: #9ca3af;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+
+/* Large tablets and small desktops */
+@media (max-width: 1200px) {
+  .showcase-content {
+    gap: 40px;
+    padding: 0 15px;
+  }
+  
+  .globe-wrapper {
+    width: 320px;
+    height: 320px;
+  }
+  
+  .details-card {
+    padding: 25px;
+  }
+  
+  .poi-name {
+    font-size: 24px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .poi-showcase {
+    height: auto;
+    max-height: none;
+    padding: 30px 0;
+  }
+  
+  .showcase-content {
+    flex-direction: column;
+    gap: 30px;
+    height: auto;
+    align-items: center;
+  }
+  
+  .globe-section,
+  .details-section {
+    height: auto;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .globe-wrapper {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .details-card {
+    height: auto;
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .showcase-header {
+    margin-bottom: 30px;
+  }
+  
+  .showcase-title {
+    font-size: 28px;
+  }
+  
+  .showcase-subtitle {
+    font-size: 15px;
+  }
+}
+
+/* Mobile landscape / small tablets */
+@media (max-width: 768px) {
+  .poi-showcase {
+    padding: 25px 0;
+  }
+  
+  .showcase-content {
+    padding: 0 15px;
+    gap: 25px;
+  }
+  
+  .showcase-header {
+    margin-bottom: 25px;
+    padding: 0 15px;
+  }
+  
+  .showcase-title {
+    font-size: 24px;
+  }
+  
+  .showcase-subtitle {
+    font-size: 14px;
+  }
+  
+  .globe-wrapper {
+    width: 280px;
+    height: 280px;
+  }
+  
+  .details-card {
+    padding: 25px;
+  }
+  
+  .poi-name {
+    font-size: 22px;
+  }
+  
+  .poi-description {
+    font-size: 13px;
+  }
+  
+  .data-metrics {
+    gap: 15px;
+  }
+  
+  .metric-value {
+    font-size: 16px;
+  }
+  
+  .progress-text {
+    font-size: 12px;
+  }
+}
+
+/* Mobile portrait */
+@media (max-width: 480px) {
+  .poi-showcase {
+    padding: 20px 0;
+  }
+  
+  .showcase-content {
+    padding: 0 10px;
+    gap: 20px;
+  }
+  
+  .showcase-header {
+    margin-bottom: 20px;
+    padding: 0 10px;
+  }
+  
+  .showcase-title {
+    font-size: 20px;
+    line-height: 1.3;
+  }
+  
+  .showcase-subtitle {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  
+  .globe-wrapper {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .details-card {
+    padding: 20px;
+  }
+  
+  .poi-name {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+  
+  .poi-description {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  
+  .data-metrics {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .metric {
+    flex: 1;
+    min-width: 60px;
+  }
+  
+  .metric-value {
+    font-size: 14px;
+  }
+  
+  .metric-label {
+    font-size: 10px;
+  }
+  
+  .category-badge {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .badge-text {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+  
+  .accuracy-badge {
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+  
+  .location-info {
+    font-size: 12px;
+  }
+  
+  .progress-text {
+    font-size: 10px;
+  }
+  
+  .progress-dots {
+    gap: 6px;
+  }
+  
+  .progress-dot {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 320px) {
+  .globe-wrapper {
+    width: 220px;
+    height: 220px;
+  }
+  
+  .details-card {
+    padding: 15px;
+  }
+  
+  .poi-name {
+    font-size: 16px;
+  }
+  
+  .showcase-title {
+    font-size: 18px;
+  }
+  
+  .data-metrics {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .metric {
+    text-align: left;
+    padding: 5px 0;
+  }
+}
+
+/* Ensure no horizontal overflow */
+* {
+  box-sizing: border-box;
+}
+
+.poi-showcase,
+.showcase-content,
+.details-card,
+.globe-section,
+.details-section {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Custom marker - responsive */
+.custom-marker {
+  position: relative;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.marker-pin {
+  position: relative;
+  width: 16px;
+  height: 24px;
+  z-index: 2;
+}
+
+.marker-pin::before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  border: 2px solid #ffffff;
+  box-shadow: 0 3px 8px rgba(102, 126, 234, 0.4);
+  animation: markerBounce 3s ease-in-out infinite;
+  top: 0;
+  left: 0;
+}
+
+.marker-pin::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 4px;
+  height: 4px;
+  background: #ffffff;
+  border-radius: 50%;
+  z-index: 3;
+  transform: rotate(45deg);
+}
+
+.marker-pulse {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #667eea;
+  border-radius: 50%;
+  animation: markerPulse 2s ease-out infinite;
+  z-index: 1;
+}
+
+/* Responsive marker for very small screens */
+@media (max-width: 480px) {
+  .marker-pin {
+    width: 14px;
+    height: 20px;
+  }
+  
+  .marker-pin::before {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .marker-pulse {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Other existing styles remain the same */
+@keyframes markerBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: rotate(-45deg) translateY(0);
+  }
+  40% {
+    transform: rotate(-45deg) translateY(-2px);
+  }
+  60% {
+    transform: rotate(-45deg) translateY(-1px);
+  }
+}
+
+@keyframes markerPulse {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+.poi-showcase {
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* POI Showcase Section - Enhanced Background */
+.poi-showcase-section {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.poi-showcase-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  pointer-events: none;
+}
+
+/* Add subtle pattern overlay */
+.poi-showcase-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 25% 25%, rgba(102, 126, 234, 0.1) 0%, transparent 25%),
+                    radial-gradient(circle at 75% 75%, rgba(118, 75, 162, 0.1) 0%, transparent 25%);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Modern Marker */
+.modern-marker {
+  position: relative;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.marker-dot {
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: 2px solid white;
+  border-radius: 50%;
+  position: relative;
+  z-index: 3;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+}
+
+.marker-ring {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(102, 126, 234, 0.6);
+  border-radius: 50%;
+  animation: markerRing 2s ease-out infinite;
+  z-index: 2;
+}
+
+.marker-pulse {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(102, 126, 234, 0.3);
+  border-radius: 50%;
+  animation: markerPulse 3s ease-out infinite;
+  z-index: 1;
+}
+
+@keyframes markerRing {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+@keyframes markerPulse {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+/* Live Indicator */
+.live-indicator {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 8px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  background: #10b981;
+  border-radius: 50%;
+  animation: livePulse 2s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* POI Details Card */
+.poi-details-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.poi-details-card.transitioning {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  border-color: rgba(102, 126, 234, 0.2);
+}
+
+/* Badges */
+.category-badge {
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+}
+
+.accuracy-indicator {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/* Progress Dots */
+.progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d1d5db;
+  transition: all 0.3s ease;
+}
+
+.progress-dot.active {
+  background: #667eea;
+  transform: scale(1.25);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+/* Enhanced responsive design with proper centering */
+@media (max-width: 1024px) {
+  .poi-showcase-section {
+    padding: 4rem 0;
+  }
+  
+  .globe-container {
+    max-width: 400px;
+    height: 400px;
+    margin: 0 auto;
+  }
+  
+  .poi-details-card {
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .poi-showcase-section {
+    padding: 3rem 0;
+  }
+  
+  .globe-container {
+    max-width: 350px;
+    height: 350px;
+    margin: 0 auto;
+  }
+  
+  .poi-details-card {
+    padding: 1.25rem;
+  }
+  
+  .live-indicator {
+    top: 10px;
+    right: 10px;
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 640px) {
+  .poi-showcase-section {
+    padding: 2.5rem 0;
+  }
+  
+  .globe-container {
+    max-width: 300px;
+    height: 300px;
+    margin: 0 auto;
+  }
+  
+  .poi-details-card {
+    padding: 1rem;
+  }
+  
+  .marker-dot {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .marker-ring {
+    width: 18px;
+    height: 18px;
+    top: -4px;
+    left: -4px;
+  }
+  
+  .marker-pulse {
+    width: 24px;
+    height: 24px;
+    top: -7px;
+    left: -7px;
+  }
+
+  /* Better mobile badge alignment */
+  .poi-details-card .flex.items-center.gap-3.mb-4 {
+    gap: 8px;
+  }
+}
+
+/* Ensure proper grid layout centering */
+.grid.grid-cols-1.lg\\:grid-cols-2 {
+  justify-items: center;
+}
+
+@media (min-width: 1024px) {
+  .grid.grid-cols-1.lg\\:grid-cols-2 {
+    justify-items: stretch;
+  }
+}
+
+/* Animation enhancements */
+.poi-details-card * {
+  transition: all 0.3s ease;
+}
+
+.poi-showcase-section {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add these micro-interactions to existing file */
+
+/* Smooth hover transitions for cards */
+.poi-card,
+.value-prop-card,
+.use-case-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.poi-card:hover,
+.value-prop-card:hover,
+.use-case-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px -5px rgba(0, 0, 0, 0.15);
+}
+
+/* Pulse animation for live indicators */
+@keyframes pulse-glow {
+  0%, 100% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.live-indicator {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Smooth button transitions */
+button, .btn {
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover, .btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Loading skeleton animations */
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, transparent 37%, #f0f0f0 63%);
+  background-size: 400px 100%;
+  animation: skeleton-loading 1.4s ease-in-out infinite;
+}
+
+/* Smooth API response animations */
+.api-response-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.api-response-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease-out;
+}
+
+/* Interactive demo enhancements */
+.demo-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+}
+
+.demo-card:hover {
+  border-color: #667eea;
+  box-shadow: 0 10px 25px -3px rgba(102, 126, 234, 0.1);
+}
+
+/* Progress bar animations */
+@keyframes progress-fill {
+  0% { width: 0%; }
+  100% { width: var(--progress-width); }
+}
+
+.progress-bar {
+  animation: progress-fill 1.5s ease-out forwards;
+}
