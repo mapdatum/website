@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import POIGlobe from '../components/POIGlobe';
 import CTASection from '../components/CTASection';
 import ProblemSolutionSection from '../components/ProblemSolutionSection';
+import StatsCard from '../components/StatsCard';
+import { motion } from 'framer-motion';
 
 const Home: React.FC = () => {
   const challenges = [
@@ -13,7 +15,7 @@ const Home: React.FC = () => {
     },
     {
       problem: "Manual Data Maintenance & Cleansing",
-      solution: "We fully automate cleansing & enrichment so you don’t have to",
+      solution: "We fully automate cleansing & enrichment so you don't have to",
       icon: "🧹"
     },
     {
@@ -23,26 +25,62 @@ const Home: React.FC = () => {
     }
   ];
 
-  const useCases = [
-    {
-      title: "Retail & E-commerce",
-      description: "Optimize delivery routes, analyze market density, identify expansion opportunities",
-      icon: "🛍️",
-      metrics: "85K+ retail POIs"
+  const categoryTaxonomy = {
+    'Finance': {
+      icon: '🏦',
+      metrics: '45K+ POIs',
+      highlight: '99.9% accuracy',
+      subcategories: ['ATMs', 'Banks', 'Credit Unions', 'Insurance', 'Financial Services']
     },
-    {
-      title: "Financial Services",
-      description: "ATM placement, branch optimization, competitor analysis",
-      icon: "🏦",
-      metrics: "45K+ financial POIs"
+    'Healthcare': {
+      icon: '🏥',
+      metrics: '35K+ POIs',
+      highlight: 'Real-time updates',
+      subcategories: ['Hospitals', 'Clinics', 'Pharmacies', 'Medical Labs', 'Dental']
     },
-    {
-      title: "Real Estate",
-      description: "Property valuation, neighborhood analysis, amenity mapping",
-      icon: "🏠",
-      metrics: "500K+ location insights"
+    'Food & Dining': {
+      icon: '🍽️',
+      metrics: '85K+ POIs',
+      highlight: 'Hourly updates',
+      subcategories: ['Restaurants', 'Cafes', 'Bars', 'Food Courts', 'Bakeries']
+    },
+    'Shopping': {
+      icon: '🛍️',
+      metrics: '150K+ POIs',
+      highlight: '15+ cities',
+      subcategories: ['Malls', 'Retail Stores', 'Supermarkets', 'Markets', 'Shops']
+    },
+    'Transportation': {
+      icon: '🚉',
+      metrics: '25K+ POIs',
+      highlight: 'Live tracking',
+      subcategories: ['Airports', 'Train Stations', 'Bus Stops', 'Metro', 'Parking']
+    },
+    'Education': {
+      icon: '🎓',
+      metrics: '30K+ POIs',
+      highlight: 'Verified data',
+      subcategories: ['Schools', 'Universities', 'Colleges', 'Libraries', 'Training Centers']
+    },
+    'Entertainment': {
+      icon: '🎭',
+      metrics: '20K+ POIs',
+      highlight: 'Events data',
+      subcategories: ['Cinemas', 'Theaters', 'Museums', 'Parks', 'Stadiums']
+    },
+    'Accommodation': {
+      icon: '🏨',
+      metrics: '15K+ POIs',
+      highlight: 'Occupancy data',
+      subcategories: ['Hotels', 'Resorts', 'Guest Houses', 'Hostels', 'Service Apartments']
+    },
+    'Worship': {
+      icon: '🕌',
+      metrics: '10K+ POIs',
+      highlight: 'Cultural insights',
+      subcategories: ['Temples', 'Churches', 'Mosques', 'Synagogues', 'Shrines']
     }
-  ];
+  };
 
   return (
     <div className="min-h-screen">
@@ -98,60 +136,103 @@ const Home: React.FC = () => {
       <ProblemSolutionSection challenges={challenges} />
 
       {/* Use Cases & Industry Applications */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-24 bg-gradient-to-br from-gray-50 via-white to-blue-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Powering India's Leading Companies
+            <h2 className="inline-block text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl mb-5">
+              Location Intelligence for{" "}
+              <span className="bg-[linear-gradient(to_right,#0ea5e9,theme(colors.primary.600))] bg-clip-text text-transparent">
+                Every Industry
+              </span>
             </h2>
+
+
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From startups to enterprises, our location intelligence drives better business decisions
+              From retail to healthcare, finance to entertainment—we provide precise POI data
+              across all major sectors in India.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {useCases.map((useCase, index) => (
-              <div key={index} className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-                <div className="text-4xl mb-4">{useCase.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{useCase.title}</h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">{useCase.description}</p>
-                <div className="inline-flex items-center px-3 py-1 bg-primary-100 text-primary-800 rounded-full text-sm font-medium">
-                  {useCase.metrics}
+          {/* Category Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            {Object.entries(categoryTaxonomy).map(([category, data], index) => (
+              <motion.div
+                key={category}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="group relative bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300"
+              >
+                {/* Category Header */}
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-primary-50 text-2xl">
+                    {data.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900">{category}</h3>
+                    <div className="flex items-center gap-2 text-sm">
+                      <span className="text-primary-600 font-medium">{data.metrics}</span>
+                      <span className="text-gray-300">•</span>
+                      <span className="text-green-600 font-medium">{data.highlight}</span>
+                    </div>
+                  </div>
                 </div>
-              </div>
+
+                {/* Subcategories */}
+                <div className="flex flex-wrap gap-2">
+                  {data.subcategories.map((subcat, idx) => (
+                    <span
+                      key={idx}
+                      className="inline-flex px-2.5 py-1 bg-gray-50 text-gray-600 text-sm rounded-lg
+                               transition-colors duration-200 hover:bg-primary-50 hover:text-primary-700"
+                    >
+                      {subcat}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Hover accent */}
+                <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-primary-500 to-blue-500 
+                               rounded-b-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              </motion.div>
             ))}
           </div>
 
-          {/* Quick Stats */}
-          <div className="bg-white rounded-2xl p-8 shadow-lg">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Trusted by Data-Driven Teams</h3>
-              <p className="text-gray-600">Real metrics from real businesses using our data</p>
+          {/* Stats Summary */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="relative overflow-hidden bg-white rounded-3xl p-8 lg:p-12 shadow-lg"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-primary-50/50 to-transparent" />
+
+            <div className="relative grid grid-cols-2 md:grid-cols-4 gap-8">
+              <div className="text-center">
+                <div className="text-3xl lg:text-4xl font-bold text-primary-600 mb-2">500K+</div>
+                <div className="text-gray-600 font-medium">Total POIs</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl lg:text-4xl font-bold text-primary-600 mb-2">15+</div>
+                <div className="text-gray-600 font-medium">Major Cities</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl lg:text-4xl font-bold text-primary-600 mb-2">99.9%</div>
+                <div className="text-gray-600 font-medium">Accuracy Rate</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl lg:text-4xl font-bold text-primary-600 mb-2">24h</div>
+                <div className="text-gray-600 font-medium">Update Cycle</div>
+              </div>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary-600 mb-1">500K+</div>
-                <div className="text-gray-600 text-sm">Verified POIs</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary-600 mb-1">15+</div>
-                <div className="text-gray-600 text-sm">Major Cities</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary-600 mb-1">99.9%</div>
-                <div className="text-gray-600 text-sm">Accuracy Rate</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary-600 mb-1">24h</div>
-                <div className="text-gray-600 text-sm">Update Cycle</div>
-              </div>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Social Proof & Testimonial */}
-      <section className="py-20 bg-gradient-to-r from-primary-600 to-primary-700">
+      {/* <section className="py-20 bg-gradient-to-r from-primary-600 to-primary-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full text-primary-100 text-sm font-medium mb-8">
@@ -189,7 +270,7 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section - Blended Design */}
       <CTASection
