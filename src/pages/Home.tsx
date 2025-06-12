@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import POIGlobe from '../components/POIGlobe';
 import CTASection from '../components/CTASection';
 import ProblemSolutionSection from '../components/ProblemSolutionSection';
-import StatsCard from '../components/StatsCard';
 import { motion } from 'framer-motion';
 
 const Home: React.FC = () => {
