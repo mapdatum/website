@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import POIGlobe from '../components/POIGlobe';
 import CTASection from '../components/CTASection';
+import ProblemSolutionSection from '../components/ProblemSolutionSection';
 
 const Home: React.FC = () => {
   const challenges = [
@@ -11,9 +12,9 @@ const Home: React.FC = () => {
       icon: "🔄"
     },
     {
-      problem: "Generic Global Datasets",
-      solution: "India-focused with local market insights",
-      icon: "🇮🇳"
+      problem: "Manual Data Maintenance & Cleansing",
+      solution: "We fully automate cleansing & enrichment so you don’t have to",
+      icon: "🧹"
     },
     {
       problem: "Poor Data Accuracy",
@@ -94,39 +95,7 @@ const Home: React.FC = () => {
       <POIGlobe />
 
       {/* Problem-Solution Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Stop Struggling with Poor Location Data
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Most location datasets are outdated, inaccurate, or don't understand Indian markets.
-              We built the solution you've been looking for.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {challenges.map((item, index) => (
-              <div key={index} className="relative p-8 bg-gradient-to-br from-red-50 to-green-50 rounded-2xl hover:shadow-lg transition-shadow">
-                <div className="text-center">
-                  <div className="text-4xl mb-4">{item.icon}</div>
-                  <div className="space-y-4">
-                    <div className="p-4 bg-red-100 rounded-lg">
-                      <div className="text-red-800 font-medium text-sm mb-1">❌ The Problem</div>
-                      <div className="text-red-900 font-semibold">{item.problem}</div>
-                    </div>
-                    <div className="p-4 bg-green-100 rounded-lg">
-                      <div className="text-green-800 font-medium text-sm mb-1">✅ Our Solution</div>
-                      <div className="text-green-900 font-semibold">{item.solution}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProblemSolutionSection challenges={challenges} />
 
       {/* Use Cases & Industry Applications */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
