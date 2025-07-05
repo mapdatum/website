@@ -86,7 +86,7 @@ const Home: React.FC = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white">
-        <div style={{ width: '100%', height: '600px', position: 'absolute', top: 0, left: 0, }}>
+        <div style={{ width: '100%', height: '600px', position: 'absolute', top: 0, left: 0, zIndex: 1 }}>
           <Threads
             amplitude={1}
             distance={0}

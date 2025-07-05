@@ -1,5 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
+import Threads from '../components/Threads';
 
 const Data: React.FC = () => {
 
@@ -106,8 +106,15 @@ const Data: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section - Consistent with Home */}
-      <section className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white">
+        <div style={{ width: '100%', height: '600px', position: 'absolute', top: 0, left: 0 }}>
+          <Threads
+            amplitude={1}
+            distance={0}
+            enableMouseInteraction={true}
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="text-center">
             <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full text-primary-100 text-sm font-medium mb-6">
@@ -142,11 +149,6 @@ const Data: React.FC = () => {
             </div>
           </div>
         </div>
-
-        {/* Floating Elements - Same as Home */}
-        <div className="absolute top-20 left-10 w-20 h-20 bg-white opacity-5 rounded-full animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-32 h-32 bg-white opacity-5 rounded-full animate-pulse delay-1000"></div>
-        <div className="absolute bottom-20 left-20 w-16 h-16 bg-white opacity-5 rounded-full animate-pulse delay-500"></div>
       </section>
 
       {/* Coverage Overview - Premium & Consistent */}
@@ -163,11 +165,11 @@ const Data: React.FC = () => {
               Intelligent Coverage Architecture
             </div>
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-              Tiered Data 
+              Tiered Data
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600"> Intelligence</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Our sophisticated coverage model delivers the right level of detail for every business need - 
+              Our sophisticated coverage model delivers the right level of detail for every business need -
               from national infrastructure insights to hyperlocal business intelligence
             </p>
           </div>
@@ -176,7 +178,7 @@ const Data: React.FC = () => {
           <div className="relative">
             {/* Connection Lines */}
             <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-green-200 via-yellow-200 to-purple-200 transform -translate-y-1/2 z-0"></div>
-            
+
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-stretch">
               {/* Tier 1: National Coverage */}
               <div className="group h-full">
@@ -185,7 +187,7 @@ const Data: React.FC = () => {
                   <div className="absolute -top-4 left-8 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
                     Tier 1
                   </div>
-                  
+
                   {/* Coverage Stats */}
                   <div className="text-center mb-6">
                     <div className="w-16 h-16 bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
@@ -234,7 +236,7 @@ const Data: React.FC = () => {
                   <div className="absolute -top-4 left-8 bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
                     Tier 2
                   </div>
-                  
+
                   <div className="text-center mb-6">
                     <div className="w-16 h-16 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                       <span className="text-2xl">🏛️</span>
@@ -289,7 +291,7 @@ const Data: React.FC = () => {
                   <div className="absolute -top-4 left-8 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
                     Tier 3
                   </div>
-                  
+
                   <div className="text-center mb-6">
                     <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                       <span className="text-2xl">🏙️</span>

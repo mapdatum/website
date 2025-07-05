@@ -1,5 +1,6 @@
 import React from 'react';
 import company from '../config/company';
+import Threads from '../components/Threads';
 
 const About: React.FC = () => {
 
@@ -47,7 +48,7 @@ const About: React.FC = () => {
       highlight: "Precision First"
     },
     {
-      title: "Data Integrity", 
+      title: "Data Integrity",
       description: "Rigorous validation ensures enterprise-grade reliability in every data point we deliver",
       icon: "🛡️",
       highlight: "Quality Assured"
@@ -63,8 +64,15 @@ const About: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section - Same style */}
-      <section className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white">
+        <div style={{ width: '100%', height: '600px', position: 'absolute', top: 0, left: 0, zIndex: 1 }}>
+          <Threads
+            amplitude={1}
+            distance={0}
+            enableMouseInteraction={true}
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="text-center">
             <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full text-primary-100 text-sm font-medium mb-6">
@@ -82,11 +90,6 @@ const About: React.FC = () => {
             </p>
           </div>
         </div>
-
-        {/* Floating Elements */}
-        <div className="absolute top-20 left-10 w-20 h-20 bg-white opacity-5 rounded-full animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-32 h-32 bg-white opacity-5 rounded-full animate-pulse delay-1000"></div>
-        <div className="absolute bottom-20 left-20 w-16 h-16 bg-white opacity-5 rounded-full animate-pulse delay-500"></div>
       </section>
 
       {/* Stats Overview - Sophisticated Layout */}
@@ -100,34 +103,34 @@ const About: React.FC = () => {
               <div className="space-y-8">
                 <div>
                   <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                    Engineering Precision 
+                    Engineering Precision
                     <span className="block text-primary-600">at Scale</span>
                   </h2>
                   <p className="text-xl text-gray-600 leading-relaxed">
-                    {company.name} transforms India's complex geographic data landscape into 
+                    {company.name} transforms India's complex geographic data landscape into
                     enterprise-ready intelligence through cutting-edge technology and deep market understanding.
                   </p>
                 </div>
-                
+
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
                     <div className="w-2 h-2 bg-primary-600 rounded-full mt-3 flex-shrink-0"></div>
                     <p className="text-lg text-gray-600">
-                      <strong className="text-gray-900">Born from necessity:</strong> India's digital transformation 
+                      <strong className="text-gray-900">Born from necessity:</strong> India's digital transformation
                       required location data that truly understood local market complexity and business patterns.
                     </p>
                   </div>
                   <div className="flex items-start space-x-4">
                     <div className="w-2 h-2 bg-primary-600 rounded-full mt-3 flex-shrink-0"></div>
                     <p className="text-lg text-gray-600">
-                      <strong className="text-gray-900">Built for scale:</strong> Our systems process millions 
+                      <strong className="text-gray-900">Built for scale:</strong> Our systems process millions
                       of data points daily, delivering enterprise-grade accuracy and real-time updates.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             <div className="lg:col-span-2">
               <div className="relative">
                 <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-3xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-500">
@@ -140,7 +143,7 @@ const About: React.FC = () => {
                     <div>
                       <div className="text-2xl font-bold text-primary-600 mb-2">Engineered for India</div>
                       <p className="text-gray-700">
-                        Purpose-built systems understanding the unique challenges of Indian markets, 
+                        Purpose-built systems understanding the unique challenges of Indian markets,
                         from tier-1 metros to emerging urban centers.
                       </p>
                     </div>
@@ -164,9 +167,8 @@ const About: React.FC = () => {
 
           <div className="space-y-12">
             {capabilities.map((capability, index) => (
-              <div key={index} className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-                index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
-              }`}>
+              <div key={index} className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
+                }`}>
                 <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
                   <div className="space-y-6">
                     <div className="flex items-center space-x-4">
@@ -180,11 +182,11 @@ const About: React.FC = () => {
                         </div>
                       </div>
                     </div>
-                    
+
                     <p className="text-lg text-gray-600 leading-relaxed">
                       {capability.description}
                     </p>
-                    
+
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                       {capability.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center space-x-2">
@@ -197,7 +199,7 @@ const About: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className={index % 2 === 1 ? 'lg:col-start-1' : ''}>
                   {/* Remove the visual entirely - let the content speak for itself */}
                 </div>
@@ -222,7 +224,7 @@ const About: React.FC = () => {
                 </div>
                 <h3 className="text-3xl font-bold mb-6">Our Vision</h3>
                 <p className="text-xl text-primary-100 leading-relaxed">
-                  To become India's definitive location intelligence platform, empowering businesses 
+                  To become India's definitive location intelligence platform, empowering businesses
                   with precision-engineered data that drives innovation and growth across the digital economy.
                 </p>
               </div>
@@ -238,7 +240,7 @@ const About: React.FC = () => {
                 </div>
                 <h3 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h3>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                  To transform raw geographic information into enterprise-ready intelligence through 
+                  To transform raw geographic information into enterprise-ready intelligence through
                   advanced data science, rigorous quality assurance, and deep understanding of Indian market dynamics.
                 </p>
               </div>
