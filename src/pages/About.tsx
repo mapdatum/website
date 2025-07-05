@@ -1,14 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { COMPANY_CONFIG } from '../config/company';
+import company from '../config/company';
 
 const About: React.FC = () => {
-  const stats = [
-    { number: "275K+", label: "Data Points", description: "Verified locations" },
-    { number: "99.8%", label: "Accuracy", description: "Quality assured" },
-    { number: "15", label: "Cities", description: "Coverage areas" },
-    { number: "24h", label: "Updates", description: "Refresh cycle" }
-  ];
 
   const capabilities = [
     {
@@ -81,7 +74,7 @@ const About: React.FC = () => {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               About{' '}
               <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
-                {COMPANY_CONFIG.name}
+                {company.name}
               </span>
             </h1>
             <p className="text-xl sm:text-2xl text-primary-100 mb-8 max-w-4xl mx-auto leading-relaxed">
@@ -111,7 +104,7 @@ const About: React.FC = () => {
                     <span className="block text-primary-600">at Scale</span>
                   </h2>
                   <p className="text-xl text-gray-600 leading-relaxed">
-                    {COMPANY_CONFIG.name} transforms India's complex geographic data landscape into 
+                    {company.name} transforms India's complex geographic data landscape into 
                     enterprise-ready intelligence through cutting-edge technology and deep market understanding.
                   </p>
                 </div>

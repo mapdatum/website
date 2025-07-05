@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, useMemo } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Globe, { GlobeMethods } from "react-globe.gl";
 import './POIGlobe.css';
 

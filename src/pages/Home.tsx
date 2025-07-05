@@ -4,6 +4,7 @@ import POIGlobe from '../components/POIGlobe';
 import CTASection from '../components/CTASection';
 import ProblemSolutionSection from '../components/ProblemSolutionSection';
 import { motion } from 'framer-motion';
+import Threads from '../components/Threads';
 
 const Home: React.FC = () => {
   const challenges = [
@@ -84,8 +85,15 @@ const Home: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white">
+        <div style={{ width: '100%', height: '600px', position: 'absolute', top: 0, left: 0, }}>
+          <Threads
+            amplitude={1}
+            distance={0}
+            enableMouseInteraction={true}
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="text-center">
             <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full text-primary-100 text-sm font-medium mb-6">
@@ -121,11 +129,6 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
-
-        {/* Floating Elements */}
-        <div className="absolute top-20 left-10 w-20 h-20 bg-white opacity-5 rounded-full animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-32 h-32 bg-white opacity-5 rounded-full animate-pulse delay-1000"></div>
-        <div className="absolute bottom-20 left-20 w-16 h-16 bg-white opacity-5 rounded-full animate-pulse delay-500"></div>
       </section>
 
       {/* Live Data Showcase */}

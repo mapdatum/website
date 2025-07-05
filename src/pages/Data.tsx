@@ -1,35 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { COMPANY_CONFIG } from '../config/company';
 
 const Data: React.FC = () => {
-  const stats = COMPANY_CONFIG.stats;
-
-  // Updated coverage structure
-  const coverageData = {
-    lowDensity: {
-      coverage: "All India",
-      description: "National infrastructure and major landmarks",
-      states: "All 28 states and 8 union territories",
-      icon: "🇮🇳"
-    },
-    mediumDensity: {
-      coverage: "Top 5 States",
-      description: "Public services and community facilities", 
-      states: ["Maharashtra", "Karnataka", "Delhi", "Tamil Nadu", "Gujarat"],
-      icon: "🏛️"
-    },
-    highDensity: {
-      coverage: "Top 15 Cities",
-      description: "Local businesses and everyday services",
-      cities: [
-        "Mumbai", "Delhi", "Bangalore", "Chennai", "Kolkata", 
-        "Hyderabad", "Pune", "Ahmedabad", "Surat", "Jaipur",
-        "Lucknow", "Kanpur", "Nagpur", "Indore", "Bhopal"
-      ],
-      icon: "🏙️"
-    }
-  };
 
   const poiCategories = {
     lowDensity: [
