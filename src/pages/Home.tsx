@@ -85,24 +85,44 @@ const Home: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white">
-        <div style={{ width: '100%', height: '600px', position: 'absolute', top: 0, left: 0, zIndex: 1 }}>
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white h-[80vh] flex items-center">
+        {/* Radial gradient overlay for depth */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.15)_0%,transparent_70%)]"></div>
+        
+        {/* Diagonal stripes pattern overlay */}
+        <div className="absolute inset-0 opacity-5" 
+             style={{ 
+               backgroundImage: `repeating-linear-gradient(45deg, #ffffff 0px, #ffffff 1px, transparent 1px, transparent 10px)`,
+               backgroundSize: '20px 20px'
+             }}>
+        </div>
+
+        {/* Subtle light beam effect */}
+        <div className="absolute -top-1/2 -left-1/4 w-1/2 h-full rotate-45 bg-gradient-to-r from-white/0 via-white/5 to-white/0 animate-beam"></div>
+        <div className="absolute -top-1/2 -right-1/4 w-1/2 h-full -rotate-45 bg-gradient-to-l from-white/0 via-white/5 to-white/0 animate-beam-reverse"></div>
+
+        {/* Threads background */}
+        <div style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, zIndex: 1 }}>
           <Threads
             amplitude={1}
             distance={0}
             enableMouseInteraction={true}
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+
+        {/* Main gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30 backdrop-blur-[1px]" />
+        
+        {/* Content */}
+        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full text-primary-100 text-sm font-medium mb-6">
+            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-primary-100 text-sm font-medium mb-6 border border-white/10">
               <span className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
               500K+ locations verified in real-time
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               India's Most Accurate<br />
-              <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-yellow-300 via-orange-300 to-yellow-300 bg-clip-text text-transparent bg-[length:200%_auto] animate-shimmer">
                 Location Intelligence
               </span>
             </h1>
@@ -113,14 +133,14 @@ const Home: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/data"
-                className="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-primary-600 bg-white hover:bg-gray-50 transition-colors shadow-lg"
+                className="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-primary-600 bg-white/90 hover:bg-white transition-colors shadow-lg backdrop-blur-sm"
               >
                 See Live Data Demo
                 <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h8m2 2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v11l4-4h8a2 2 0 002-2z" />
                 </svg>
               </Link>
-              <button className="inline-flex items-center px-8 py-4 border-2 border-white text-base font-medium rounded-lg text-white hover:bg-white hover:text-primary-600 transition-colors">
+              <button className="inline-flex items-center px-8 py-4 border-2 border-white/30 text-base font-medium rounded-lg text-white hover:bg-white/10 transition-colors backdrop-blur-sm">
                 <svg className="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
                 </svg>

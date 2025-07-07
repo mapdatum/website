@@ -111,11 +111,7 @@ export const COMPANY_CONFIG = {
 
   // Legal Information
   legal: {
-    copyright: `© ${new Date().getFullYear()} MapDatum. All rights reserved.`,
-    privacyPolicyUrl: '/privacy-policy',
-    termsOfServiceUrl: '/terms-of-service',
-    cookiePolicyUrl: '/cookie-policy',
-    disclaimerUrl: '/disclaimer'
+    copyright: `© ${new Date().getFullYear()} MapDatum. All rights reserved.`
   },
 
   // SEO & Meta Information
@@ -141,8 +137,8 @@ export const COMPANY_CONFIG = {
   navigation: {
     main: [
       { name: 'Home', path: '/' },
-      { name: 'Data', path: '/data' },
       { name: 'About', path: '/about' },
+      { name: 'Data', path: '/data' },
       { name: 'Contact', path: '/contact' }
     ],
     footer: [

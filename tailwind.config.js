@@ -64,6 +64,38 @@ module.exports = {
           },
         },
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            color: '#334155', // slate-700
+            h2: {
+              color: '#1e293b', // slate-800
+              fontWeight: '700',
+            },
+            h3: {
+              color: '#1e293b', // slate-800
+              fontWeight: '600',
+            },
+            strong: {
+              color: '#1e293b', // slate-800
+              fontWeight: '600',
+            },
+            a: {
+              color: '#2563eb', // primary-600
+              '&:hover': {
+                color: '#1d4ed8', // primary-700
+              },
+            },
+            ul: {
+              li: {
+                '&::marker': {
+                  color: '#2563eb', // primary-600
+                },
+              },
+            },
+          },
+        },
+      },
       utilities: {
         '.animation-delay-2000': {
           'animation-delay': '2s',
@@ -74,5 +106,7 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }
